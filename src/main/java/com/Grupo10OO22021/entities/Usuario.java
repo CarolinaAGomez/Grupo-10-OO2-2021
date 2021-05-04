@@ -53,6 +53,14 @@ public class Usuario {
 		this.username = username;
 		this.password = password;
 	}
+	
+	public Usuario( String username, String password, Perfil perfil) {
+		super();
+		
+		this.username = username;
+		this.password = password;
+		this.perfil=perfil;
+	}
 
 	
 

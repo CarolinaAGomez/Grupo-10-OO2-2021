@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+
+<head > </head>
+
+<body>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+    <div class="card-body">
+    
+ 
+   <!--    Si el usuario existe se le da la bienvenida el y el nombre se obtiene de lo que le manda el controlador a la vista -->
+   
+   <span th:if="${session.usuario != null}">Bienvenido/a  <span class="font-italic" th:text="${session.usuario.nombre}" ></span></span>
+    
+  
+   
+  <!-- DE ESTA FORMA APARECE EL NIMBRE DE USUARIO
+  
+  <span th:if="${session.usuario != null}">Bienvenido/a [[${#httpServletRequest.remoteUser}]]! <span class="font-italic"  ></span></span> -->  
+    
+    
+    <span>Seleccione la opcion que desea realizar</span><br>
+    <a th:href="@{/createUser}" >ALTA USUARIO</a> <br>
+     <a href=# >BAJA USUARIO</a><br>
+      <a href=# >MODIFICACION USUARIO</a><br>
+      
+      <a th:href="@{/createPerfil}" >ALTA PERFIL</a><br>
+     <a href=# >BAJA PERFIL</a><br>
+      <a href=# >MODIFICACION PERFIL</a><br>
+    
+    
+    <form th:action= "@{/logout}"  method="POST">  <!-- ya security tiene el logout implemenantado? -->
+    
+    
+    <button type="submit" class="btn btn-primary mt-3">Salir</button> 
+    
+   
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    </div>
+	
+</body>
+</html>
