@@ -13,8 +13,6 @@ import com.Grupo10OO22021.entities.Usuario;
 import com.Grupo10OO22021.repository.IUsuarioRepository;
 import com.Grupo10OO22021.services.impl.UsuarioService;
 
-
-
 @Controller
 public class LoginController {
 	
@@ -24,43 +22,31 @@ public class LoginController {
 	
 	@Autowired
 	private IUsuarioRepository userRepo;
-	
-	
-@GetMapping("/login")
-public String login() {
-	return "login";
-}
 
-
-@GetMapping("/menu")
-public ModelAndView index(Authentication auth, HttpSession session, Model model) {
-	ModelAndView mv = null;
-	//Para conseguir el nombre del usuario de la sesion, ya estoy adentro(?
-	String username= auth.getName();  //USERNAME
-	
-	//Si el usuario no esta creado aun
-	if (session.getAttribute("usuario")== null) {
-		//Lo voy a buscar a la BD
-		Usuario usuario = userRepo.findByUsername(username);
-		//La clave es null porque no la necesito. No lo manda.
-		usuario.setPassword(null);
-		//vamos a mandar a la vista el usuario.
-		session.setAttribute("usuario", usuario); //Se lo mando a la vista
+	@GetMapping("/menu")
+	public ModelAndView index(Authentication auth, HttpSession session, Model model) {
+		ModelAndView mv = null;
+		//Para conseguir el nombre del usuario de la sesion, ya estoy adentro(?
+		String username= auth.getName();  //USERNAME
 		
-		if(usuario.getPerfil().getIdPerfil()==2) {
-			 mv=new ModelAndView("menuuser");
+		//Si el usuario no esta creado aun
+		if (session.getAttribute("usuario")== null) {
+			//Lo voy a buscar a la BD
+			Usuario usuario = userRepo.findByUsername(username);
+			//La clave es null porque no la necesito. No lo manda.
+			usuario.setPassword(null);
+			//vamos a mandar a la vista el usuario.
+			session.setAttribute("usuario", usuario); //Se lo mando a la vista
 			
-	
+			if(usuario.getPerfil().getIdPerfil()==1) {
+				 mv=new ModelAndView("menuuser");
+			}
+			if(usuario.getPerfil().getIdPerfil()==2) {
+				 mv=new ModelAndView("menu");
+			}
 		}
-		if(usuario.getPerfil().getIdPerfil()==1) {
-			 mv=new ModelAndView("menu");
-			
-		
-	
-		}
-		
+		return mv;
 	}
-	return mv;
+	
 
-}
 }

@@ -19,7 +19,7 @@ public class Usuario {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // auto-increment igual a true
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto-increment igual a true
 	private long idUsuario;
 	private String nombre;
 	private String apellido;
