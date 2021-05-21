@@ -12,9 +12,15 @@ public interface IUsuarioService {
 	
 	public List<Usuario> GetAll();
 	
-	public UsuarioModel traerUsuario(long id);
+	public UsuarioModel traerUsuarioPorId(long id);
+
+	public UsuarioModel traerUsuarioYPerfilPorId(long id);
+
+	public UsuarioModel traerUsuarioYPerfilPorUsername(String username);
 	
-	public UsuarioModel traerUsuario(int dni);
+	public UsuarioModel traerUsuarioPorUsername(String username);
+	
+	public UsuarioModel traerUsuarioPorDni(int dni);
 	
 	public UsuarioModel insertOrUpdate(UsuarioModel usuario) throws Exception;
 	

@@ -27,13 +27,18 @@
                         <td th:text="${usuario.dni}"></td>
                         <td th:text="${usuario.mail}"></td>
                         <td th:text="${usuario.username}"></td>
-                        <td th:text="${usuario.perfil}"></td>
                         <td>
-                            <form action="#" th:action="@{/usuario/update/}+${usuario.idUsuario}" method="GET">
-                                <input type="submit" class="btn btn-warning" style="display:inline-block" value="Editar">
+                            <th:block th:each="perfil,iter:${usuario.perfil}">
+                                <label th:text="${perfil.nombreRol}"></label>
+                                <th:block th:if="${!iter.last}"></th:block></th:block>
+                            </th:block>
+                        </td>
+                        <td>
+                            <form action="#" th:action="@{/usuario/update/}+${usuario.idUsuario}" style="display:inline-block" method="GET">
+                                <input type="submit" class="btn btn-warning" value="Editar">
                             </form>
-                            <form action="#" th:action="@{/usuario/baja/}+${usuario.idUsuario}" method="POST">
-                                <input type="submit" class="btn btn-danger"  style="display:inline-block" value="Eliminar">
+                            <form action="#" th:action="@{/usuario/baja/}+${usuario.idUsuario}" style="display:inline-block" method="POST">
+                                <input type="submit" class="btn btn-danger" value="Eliminar">
                             </form>
                         </td>
                     </tr>

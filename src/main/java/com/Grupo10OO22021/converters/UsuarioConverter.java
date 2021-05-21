@@ -1,15 +1,17 @@
 package com.Grupo10OO22021.converters;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.Grupo10OO22021.entities.Usuario;
 import com.Grupo10OO22021.models.UsuarioModel;
 
 
-
 @Component
 public class UsuarioConverter {
 	
+	@Autowired
+	private PerfilConverter perfilConverter;
 	
 	public UsuarioModel entityToModel(Usuario user) {
 		UsuarioModel userModel = null;
@@ -20,7 +22,8 @@ public class UsuarioConverter {
 										 user.getDni(), 
 										 user.getMail(), 
 										 user.getUsername(), 
-										 user.getPassword()
+										 user.getPassword(),
+										 perfilConverter.entityToModel(user.getPerfil())
 			);
 		}
 		return userModel;
@@ -34,7 +37,8 @@ public class UsuarioConverter {
 						   userModel.getDni(), 
 						   userModel.getMail(), 
 						   userModel.getUsername(), 
-						   userModel.getPassword()
+						   userModel.getPassword(),
+						   perfilConverter.modeltoEntity(userModel.getPerfil())
 		);
 	}
 	

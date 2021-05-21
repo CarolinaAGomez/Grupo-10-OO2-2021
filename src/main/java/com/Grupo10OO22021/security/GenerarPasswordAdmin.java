@@ -1,6 +1,5 @@
 package com.Grupo10OO22021.security;
 
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class GenerarPasswordAdmin {

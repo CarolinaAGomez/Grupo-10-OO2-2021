@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class Perfil {
 	@Column(name = "nombreRol")
 	private String nombreRol;
 	
-	@OneToMany(mappedBy="perfil")  //1 ROL TIENE MUCHOS USUARIOS  . perfil ES DE LA LISTA DE USUARIOS
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="perfil")  //1 ROL TIENE MUCHOS USUARIOS  . perfil ES DE LA LISTA DE USUARIOS
 	private Set<Usuario> usuarios;// =new HashSet<Usuario>();
 	
 	public Perfil() {}

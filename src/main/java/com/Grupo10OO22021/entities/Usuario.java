@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +41,7 @@ public class Usuario {
 	@Column(name = "password")
 	private String password;
 	
-	@ManyToOne  //1 USUARIO TIENE UN ROL. IdPerfil ES DE LA pk de rol
+	@ManyToOne(fetch = FetchType.LAZY) //1 USUARIO TIENE UN ROL. IdPerfil ES DE LA pk de rol
 	@JoinColumn(name="idPerfil")
 	private Perfil perfil;
 	 
@@ -66,9 +67,19 @@ public class Usuario {
 		this.password = password;
 	}
 	
+	public Usuario(long idUsuario,String nombre, String apellido, int dni, String mail, String username, String password,Perfil perfil) {
+		this.idUsuario = idUsuario;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.mail = mail;
+		this.username = username;
+		this.password = password;
+		this.perfil  = perfil;
+	}
+
 	public Usuario( String username, String password, Perfil perfil) {
 		super();
-		
 		this.username = username;
 		this.password = password;
 		this.perfil=perfil;

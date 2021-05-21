@@ -26,7 +26,10 @@
             <input type="text" th:field="*{dni}" th:text="${dni}" placeholder="Dni" required="required" />
             <input type="email" th:field="*{mail}" th:text="${mail}" placeholder="Correo electrónico" required="required" />
             <input type="text" th:field="*{username}" th:text="${username}" placeholder="Nombre de usuario" required="required" />
-            <input type="password" th:field="*{password}" th:text="${password}" placeholder="Contraseña" required="required" />
+            <input type="password" th:field="*{password}" th:text="${password}" placeholder="Contraseña" />
+            <select th:field="${usuario.perfil.idPerfil}">
+                <option th:each="perfil : ${perfiles}" th:text="${perfil.nombreRol}" th:value="${perfil.idPerfil}"></option>
+            </select>
             <button type="submit" class="btn btn-primary btn-block btn-large">Actualizar usuario</button>
         </form>
     </div>

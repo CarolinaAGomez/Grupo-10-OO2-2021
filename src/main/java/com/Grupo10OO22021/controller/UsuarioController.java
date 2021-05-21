@@ -2,7 +2,7 @@ package com.Grupo10OO22021.controller;
 
 import com.Grupo10OO22021.helpers.ViewRouteHelper;
 import com.Grupo10OO22021.models.UsuarioModel;
-import com.Grupo10OO22021.repository.IUsuarioRepository;
+import com.Grupo10OO22021.services.IPerfilService;
 import com.Grupo10OO22021.services.IUsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,12 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
-    
-    @Autowired
-	private IUsuarioRepository userRepo;
 
     @Autowired
     private IUsuarioService userService;
+
+    @Autowired
+    private IPerfilService perfilService;
 
     @GetMapping("/")
     public String listarUsuarios(Model model){
@@ -36,6 +36,7 @@ public class UsuarioController {
     public ModelAndView altaUsuario(){
         ModelAndView mav = new ModelAndView(ViewRouteHelper.ALTA);
         mav.addObject("usuario", new UsuarioModel());
+        mav.addObject("perfiles", perfilService.GetAll());
         return mav;
     }
     @PostMapping("/crear")
@@ -46,9 +47,11 @@ public class UsuarioController {
 
     @GetMapping("/update/{id}")
     public ModelAndView modifcarUsuario(@PathVariable("id") long id ){
-        ModelAndView maV = new ModelAndView(ViewRouteHelper.MODIFICAR);
-        maV.addObject("usuario", userService.traerUsuario(id));
-        return maV;
+        ModelAndView mav = new ModelAndView(ViewRouteHelper.MODIFICAR);
+        UsuarioModel userModel =  userService.traerUsuarioYPerfilPorId(id);
+        mav.addObject("usuario", userModel);
+        mav.addObject("perfiles", perfilService.GetAll());
+        return mav;
     }
     @PostMapping("/actualizar")
     public RedirectView actualizarUsuario(@ModelAttribute ("usuario") UsuarioModel usuario  ) throws Exception{

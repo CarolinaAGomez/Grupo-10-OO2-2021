@@ -9,9 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.Grupo10OO22021.entities.Usuario;
 import com.Grupo10OO22021.helpers.ViewRouteHelper;
-import com.Grupo10OO22021.repository.IUsuarioRepository;
+import com.Grupo10OO22021.models.UsuarioModel;
 import com.Grupo10OO22021.services.impl.UsuarioService;
 
 
@@ -23,8 +22,6 @@ public class LoginController {
 	@Autowired
 	private UsuarioService userService;
 	
-	@Autowired
-	private IUsuarioRepository userRepo;
 	
 	@GetMapping("/")
 	public String toLogin(){
@@ -40,7 +37,8 @@ public class LoginController {
 		//Si el usuario no esta creado aun
 		if (session.getAttribute("usuario")== null) {
 			//Lo voy a buscar a la BD
-			Usuario usuario = userRepo.findByUsername(username);
+			UsuarioModel usuario = userService.traerUsuarioPorUsername(username);
+			System.out.println(usuario);
 			//La clave es null porque no la necesito. No lo manda.
 			usuario.setPassword(null);
 			//vamos a mandar a la vista el usuario.
