@@ -15,8 +15,7 @@ import com.Grupo10OO22021.entities.Usuario;
 public interface IUsuarioRepository extends JpaRepository<Usuario, Serializable> { //que es serializable?
 	
 	// EL REPOSITORY TRABAJA DIRECTAMENTE CON LA BASE DE DATOS.(ENTITY)
-	
-	
+		
 	public Usuario findByIdUsuario(long idUsusario);
 	
 	//@Query (" SELECT U from Usuario where u.dni = (:dni)")  // NO HACE FALTA , CON EL ATRIBUTO YA LO TRAE.

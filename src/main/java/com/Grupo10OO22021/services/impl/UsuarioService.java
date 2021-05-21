@@ -42,22 +42,18 @@ public class UsuarioService implements IUsuarioService {
 
 	@Override
 	public UsuarioModel traerUsuario(int dni) {
-		UsuarioModel usuario= userConverter.entityToModel(userRepo.findByDni(dni));
+		UsuarioModel usuario = userConverter.entityToModel(userRepo.findByDni(dni));
 		return usuario;
 	}
 
 	@Override
-	public UsuarioModel insertOrUpdate(UsuarioModel usuario) throws Exception {
-		
-		
-		if (traerUsuario(usuario.getDni())!=null) {
-			throw new Exception("El usuario ya se encuentra en la base de datos");
-		}
-		//convierte el modelo en entidad
-		Usuario user= userConverter.modelToEntity(usuario);
-		//convierte nuevamente en modelo para retonarlo y guarda el entity que se convirtio anteriormente.   SETEA LA CLAVE PARA QUE SE ENCRIPTE
-		user.setPassword(passwordEnconder.encode(user.getPassword()));
-		return userConverter.entityToModel(userRepo.save(user));
+	public UsuarioModel insertOrUpdate(UsuarioModel usuario){
+		//SETEA LA CLAVE PARA QUE SE ENCRIPTE
+		usuario.setPassword(passwordEnconder.encode(usuario.getPassword()));
+		//convierte el modelo en entidad y guarda el entity que se convirtio anteriormente. 
+		Usuario user= userRepo.save(userConverter.modelToEntity(usuario));
+		//convierte nuevamente en modelo para retonarlo
+		return userConverter.entityToModel(user);
 	}
 
 	@Override

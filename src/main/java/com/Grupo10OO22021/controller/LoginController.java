@@ -8,10 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.Grupo10OO22021.entities.Usuario;
+import com.Grupo10OO22021.helper.ViewRouteHelper;
 import com.Grupo10OO22021.repository.IUsuarioRepository;
 import com.Grupo10OO22021.services.impl.UsuarioService;
+
+
 
 @Controller
 public class LoginController {
@@ -22,10 +26,15 @@ public class LoginController {
 	
 	@Autowired
 	private IUsuarioRepository userRepo;
+	
+	@GetMapping("/")
+	public String toLogin(){
+		return ViewRouteHelper.LOGIN;
+	}
 
 	@GetMapping("/menu")
-	public ModelAndView index(Authentication auth, HttpSession session, Model model) {
-		ModelAndView mv = null;
+	public RedirectView index(Authentication auth, HttpSession session, Model model) {
+		RedirectView rv = null;
 		//Para conseguir el nombre del usuario de la sesion, ya estoy adentro(?
 		String username= auth.getName();  //USERNAME
 		
@@ -38,15 +47,17 @@ public class LoginController {
 			//vamos a mandar a la vista el usuario.
 			session.setAttribute("usuario", usuario); //Se lo mando a la vista
 			
-			if(usuario.getPerfil().getIdPerfil()==1) {
-				 mv=new ModelAndView("menuuser");
+			if(usuario.getPerfil().getIdPerfil() == 2) {
+				System.out.println(usuario.getPerfil().getNombreRol());
+				rv = new RedirectView(ViewRouteHelper.MENU_USER);
 			}
-			if(usuario.getPerfil().getIdPerfil()==2) {
-				 mv=new ModelAndView("menu");
+			if(usuario.getPerfil().getIdPerfil() == 1) {
+				System.out.println(usuario.getPerfil().getNombreRol());
+				rv = new RedirectView(ViewRouteHelper.MENU_ADMIN);
 			}
+			
 		}
-		return mv;
-	}
-	
+		return rv;
 
+	}
 }

@@ -2,30 +2,42 @@ package com.Grupo10OO22021.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
+@Table(name = "usuario")
 public class Usuario {
-	
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto-increment igual a true
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idUsuario;
+
+	@Column(name = "nombre")
 	private String nombre;
+
+	@Column(name = "apellido")
 	private String apellido;
+
+	@Column(name = "dni")
 	private int dni;
+
+	@Column(name = "mail")
 	private String mail;
+
+	@Column(name = "username")
 	private String username; 
+
+	@Column(name = "password")
 	private String password;
 	
 	@ManyToOne  //1 USUARIO TIENE UN ROL. IdPerfil ES DE LA pk de rol
@@ -44,8 +56,8 @@ public class Usuario {
 	public Usuario () {}
 	
 	
-	public Usuario(String nombre, String apellido, int dni, String mail, String username, String password) {
-		super();
+	public Usuario(long idUsuario,String nombre, String apellido, int dni, String mail, String username, String password) {
+		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
