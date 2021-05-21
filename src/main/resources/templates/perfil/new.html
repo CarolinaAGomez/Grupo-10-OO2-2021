@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Nuevo perfil</title>
+</head>
+<body>
+	<h1>Alta Perfil</h1>
+		<div>
+			<form action=# th:action="@{/perfil/create}" th:object="${perfil}" method="POST">
+				<input type="text" th:field="*{nombreRol}" placeholder="Nombre">
+				<input type="submit" value="Guardar">
+			</form>
+		</div>
+</body>
+</html>
+
+<!-- <form action="#" th:action="@{new}" th:object="${degree}" method="post"> -->

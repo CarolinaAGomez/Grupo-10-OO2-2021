@@ -5,20 +5,14 @@ import org.springframework.stereotype.Component;
 import com.Grupo10OO22021.entities.Perfil;
 import com.Grupo10OO22021.models.PerfilModel;
 
-
-
-
 @Component
 public class PerfilConverter {
 
 	public PerfilModel entityToModel(Perfil perfil) {
-		
-		return new PerfilModel(perfil.getNombreRol());
-		
-			}
+		return new PerfilModel(perfil.getIdPerfil(),perfil.getNombreRol());	
+	}
 	
 	public Perfil modeltoEntity(PerfilModel perfilModel) {
-		
-		return new Perfil(perfilModel.getNombreRol());
+		return new Perfil(perfilModel.getIdPerfil(),perfilModel.getNombreRol());
 	}
 }
