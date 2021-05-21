@@ -3,8 +3,6 @@ package com.Grupo10OO22021.models;
 
 
 public class UsuarioModel {
-	
-	
 	private long idUsuario;
 	private String nombre;
 	private String apellido;
@@ -16,8 +14,8 @@ public class UsuarioModel {
 	public UsuarioModel() {
 	}
 	
-	public UsuarioModel(String nombre, String apellido, int dni, String mail, String username, String password) {
-		super();
+	public UsuarioModel(long idUsuario, String nombre, String apellido, int dni, String mail, String username, String password) {
+		this.setIdUsuario(idUsuario);
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;

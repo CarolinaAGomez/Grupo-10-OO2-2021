@@ -11,14 +11,11 @@
 					<span th:if="${session.usuario != null}">Bienvenido/a <span
 						class="font-italic" th:text="${session.usuario.nombre}"></span></span>
 					<span>Seleccione la opcion que desea realizar</span>
-					<br> 
-					<a th:href="@{/createUser}">Usuarios</a> 
-					<br> 
-					<a th:href="@{/perfil}">Perfiles</a>
-					<br>
+					<a class="mt-5" style="display: block;" th:href="@{/usuario/}" >Usuarios</a> <br>
+					<a class="mt-5" style="display: block;" th:href="@{/perfil}">Perfiles</a>
 					<form th:action="@{/logout}" method="POST">
 						<!-- ya security tiene el logout implemenantado? -->
-					<button type="submit" class="btn btn-primary mt-3">Salir</button>
+					<button type="submit" class="btn btn-primary mt-20">Salir</button>
 				</div>
 			</div>
 		</div>
