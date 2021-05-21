@@ -19,9 +19,8 @@ public class ViewRouteHelper {
 	//PERFIL REDIRECT
 	public static final String PERFIL_ROOT = "/perfil";
 
-
+    
     //USUARIO 
-
     public final static String LISTAR = "usuarios/listar";
     public final static String ALTA = "usuarios/alta";
     public final static String MODIFICAR = "usuarios/modificar";
