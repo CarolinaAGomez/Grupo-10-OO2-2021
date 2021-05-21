@@ -1,6 +1,6 @@
 package com.Grupo10OO22021.controller;
 
-import com.Grupo10OO22021.helper.ViewRouteHelper;
+import com.Grupo10OO22021.helpers.ViewRouteHelper;
 import com.Grupo10OO22021.models.UsuarioModel;
 import com.Grupo10OO22021.repository.IUsuarioRepository;
 import com.Grupo10OO22021.services.IUsuarioService;

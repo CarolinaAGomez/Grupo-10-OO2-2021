@@ -7,11 +7,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.Grupo10OO22021.entities.Usuario;
-import com.Grupo10OO22021.helper.ViewRouteHelper;
+import com.Grupo10OO22021.helpers.ViewRouteHelper;
 import com.Grupo10OO22021.repository.IUsuarioRepository;
 import com.Grupo10OO22021.services.impl.UsuarioService;
 
