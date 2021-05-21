@@ -33,7 +33,7 @@ public class UsuarioService implements IUsuarioService {
 	}
 
 	@Override
-	public UsuarioModel traerUsuario(long id) {
+	public UsuarioModel traerUsuarioPorId(long id) {
 		
 		//COMO EL REPO TRABAJA CON ENTIDAD HAY QUE PASARLO A MODEL PORQUE LA INTERFACE SERVICE TRABAJA CON MODEL
 		UsuarioModel usuario= userConverter.entityToModel(userRepo.findByIdUsuario(id));
@@ -41,7 +41,23 @@ public class UsuarioService implements IUsuarioService {
 	}
 
 	@Override
-	public UsuarioModel traerUsuario(int dni) {
+	public UsuarioModel traerUsuarioYPerfilPorId(long id){
+		UsuarioModel usuario = userConverter.entityToModel(userRepo.findByIdUsuarioAndFetchPerfilEagerly(id));
+		return usuario ;
+	}
+
+	@Override
+	public UsuarioModel traerUsuarioYPerfilPorUsername(String username){
+		UsuarioModel usuario = userConverter.entityToModel(userRepo.findByUsernameAndFetchPerfilEagerly(username));
+		return usuario;
+	}
+	@Override
+	public UsuarioModel traerUsuarioPorUsername(String username){
+		UsuarioModel usuario = userConverter.entityToModel(userRepo.findByUsername(username));
+		return usuario;
+	}
+	@Override
+	public UsuarioModel traerUsuarioPorDni(int dni) {
 		UsuarioModel usuario = userConverter.entityToModel(userRepo.findByDni(dni));
 		return usuario;
 	}

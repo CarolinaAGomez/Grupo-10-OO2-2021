@@ -43,4 +43,10 @@ public class PerfilModel {
 		this.usuarios = usuarios;
 	}
 
+	@Override
+	public String toString() {
+		return "idPerfil: " + idPerfil + "\nnombreRol: " + nombreRol;
+	}
+
+	
 }

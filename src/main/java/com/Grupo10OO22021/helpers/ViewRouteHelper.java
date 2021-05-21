@@ -3,7 +3,7 @@ package com.Grupo10OO22021.helpers;
 public class ViewRouteHelper {
 	
 	//USER
-	public static final String LOGIN = "user/login";
+	public static final String LOGIN = "/login";
 
 	// MENUS
 	public final static String MENU_ADMIN = "/menu";
