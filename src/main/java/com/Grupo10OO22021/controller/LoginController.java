@@ -24,16 +24,22 @@ public class LoginController {
 	
 	
 	@GetMapping("/")
+	public String Login(){
+		return ViewRouteHelper.LOGIN;
+	}
+
+	
+	@GetMapping("/login")
 	public String toLogin(){
 		return ViewRouteHelper.LOGIN;
 	}
 
 	@GetMapping("/menu")
-	public RedirectView index(Authentication auth, HttpSession session, Model model) {
-		RedirectView rv = null;
+	public String /*RedirectView */ index(Authentication auth, HttpSession session, Model model) {
+		//RedirectView rv = null;
+		String rv=null;;
 		//Para conseguir el nombre del usuario de la sesion, ya estoy adentro(?
 		String username= auth.getName();  //USERNAME
-		
 		//Si el usuario no esta creado aun
 		if (session.getAttribute("usuario")== null) {
 			//Lo voy a buscar a la BD
@@ -44,17 +50,28 @@ public class LoginController {
 			//vamos a mandar a la vista el usuario.
 			session.setAttribute("usuario", usuario); //Se lo mando a la vista
 			
-			if(usuario.getPerfil().getIdPerfil() == 2) {
+			if(usuario.getPerfil().getNombreRol().equals("ROLE_USER")) {
 				System.out.println(usuario.getPerfil().getNombreRol());
-				rv = new RedirectView(ViewRouteHelper.MENU_USER);
+				//rv = new RedirectView(ViewRouteHelper.MENU_USER);
+				rv = ViewRouteHelper.MENU_USER;
+				
 			}
-			if(usuario.getPerfil().getIdPerfil() == 1) {
+			if(usuario.getPerfil().getNombreRol().equals("ROLE_AUDITOR")) {
 				System.out.println(usuario.getPerfil().getNombreRol());
-				rv = new RedirectView(ViewRouteHelper.MENU_ADMIN);
+				//rv= new RedirectView (ViewRouteHelper.MENU_AUDITOR);
+				rv = ViewRouteHelper.MENU_AUDITOR;
+			}
+			
+			if(usuario.getPerfil().getNombreRol().equals("ROLE_ADMIN")) {
+				System.out.println(usuario.getPerfil().getNombreRol());
+				//rv = new RedirectView(ViewRouteHelper.MENU_ADMIN);
+				rv = ViewRouteHelper.MENU_ADMIN;
+				
 			}
 			
 		}
 		return rv;
 
 	}
+
 }

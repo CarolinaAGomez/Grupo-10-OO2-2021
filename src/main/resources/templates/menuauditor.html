@@ -8,7 +8,8 @@
 			<div class="col-md-3">
 				<div class="card-body">
 					<!--    Si el usuario existe se le da la bienvenida el y el nombre se obtiene de lo que le manda el controlador a la vista -->
-				<h1>HOLA SOY USER, SOLICITAR PERMISOS AL ADMINISTRADOR</h1>
+				<h1>HOLA SOY AUDITOR</h1>
+					 <a class="mt-5" style="display: block;" th:href="@{/auditor/}" >Listado de Usuarios</a> <br>
 					 
 					<form th:action="@{/logout}" method="POST">
 						<!-- ya security tiene el logout implemenantado? -->

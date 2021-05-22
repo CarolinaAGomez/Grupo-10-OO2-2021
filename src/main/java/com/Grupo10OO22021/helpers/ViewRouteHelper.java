@@ -7,6 +7,7 @@ public class ViewRouteHelper {
 
 	// MENUS
 	public final static String MENU_ADMIN = "/menu";
+	public final static String MENU_AUDITOR = "/menuauditor";
 	public final static String MENU_USER = "/menuuser";
   
 	//PERFIL
@@ -21,6 +22,10 @@ public class ViewRouteHelper {
     public final static String LISTAR = "usuarios/listar";
     public final static String ALTA = "usuarios/alta";
     public final static String MODIFICAR = "usuarios/modificar";
+    
+    
+  //AUDITOR
+    public final static String LISTADO = "auditor/listar";
 
 	// REDIRECT
 	public final static String USUARIO_ROOT = "/usuario/";

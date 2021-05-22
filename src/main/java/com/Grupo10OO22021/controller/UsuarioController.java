@@ -6,6 +6,8 @@ import com.Grupo10OO22021.services.IPerfilService;
 import com.Grupo10OO22021.services.IUsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -25,7 +28,8 @@ public class UsuarioController {
 
     @Autowired
     private IPerfilService perfilService;
-
+    
+  
     @GetMapping("/")
     public String listarUsuarios(Model model){
         model.addAttribute("usuarios", userService.GetAll());

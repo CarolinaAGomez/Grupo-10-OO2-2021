@@ -42,9 +42,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests() 
 				.antMatchers(resources).permitAll()  //que permita a todo lo que configure arriba
-				.antMatchers("/","/login").permitAll() //a este path puede ingresar cualquiera
-				.antMatchers("/user*").hasAnyRole("ADMIN","USER") //anyrole para poder poner mas de un rol
-				.antMatchers("/admin*").hasRole("ADMIN") 
+				.antMatchers("/").permitAll() //a este path puede ingresar cualquiera
+				//.antMatchers("/menuuser").permitAll()
+				.antMatchers("/user/**").hasAnyRole("ADMIN","USER") //anyrole para poder poner mas de un rol
+				.antMatchers("/auditor/**").hasAnyRole("ADMIN","AUDITOR") //anyrole para poder poner mas de un rol
+				.antMatchers("/usuario/**").hasRole("ADMIN") 
+				.antMatchers("/perfil/**").hasRole("ADMIN") 
 				.anyRequest().authenticated() //Caulquier otra url tiene que estar autenticada
 			.and()
 				.formLogin() //form de login
@@ -54,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            .usernameParameter("username")
 	            .passwordParameter("password") //LO MISMO TIENE QUE ESTAR EN LA VISTA.-
 	        .and()
-	        	.logout().permitAll().logoutSuccessUrl("/logout");
+	        	.logout().permitAll().logoutSuccessUrl("/");
 	}
 	  
 
