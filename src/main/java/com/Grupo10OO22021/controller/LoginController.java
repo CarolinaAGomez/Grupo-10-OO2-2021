@@ -13,15 +13,11 @@ import com.Grupo10OO22021.helpers.ViewRouteHelper;
 import com.Grupo10OO22021.models.UsuarioModel;
 import com.Grupo10OO22021.services.impl.UsuarioService;
 
-
-
 @Controller
 public class LoginController {
 	
-	
 	@Autowired
 	private UsuarioService userService;
-	
 	
 	@GetMapping("/")
 	public String toLogin(){
