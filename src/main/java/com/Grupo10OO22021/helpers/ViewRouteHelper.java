@@ -3,10 +3,12 @@ package com.Grupo10OO22021.helpers;
 public class ViewRouteHelper {
 	
 	//USER
+	public static final String LOGIN_ROOT = "/login/";
 	public static final String LOGIN = "/login";
 
 	// MENUS
-	public final static String MENU_ADMIN = "/menu";
+	public final static String MENU_ADMIN = "/menuadmin";
+	public final static String MENU_AUDITOR = "/auditor/menuauditor";
 	public final static String MENU_USER = "/menuuser";
   
 	//PERFIL
@@ -17,12 +19,20 @@ public class ViewRouteHelper {
 	//REDIRECT
 	public static final String PERFIL_ROOT = "/perfil";
 
-	//USUARIO
-    public final static String LISTAR = "usuarios/listar";
-    public final static String ALTA = "usuarios/alta";
-    public final static String MODIFICAR = "usuarios/modificar";
+	//ADMIN
+    public final static String ADMIN_LISTAR = "usuarios/listar";
+    public final static String ADMIN_ALTA = "usuarios/alta";
+    public final static String ADMIN_MODIFICAR = "usuarios/modificar";
+
+    // REDIRECT
+	public final static String ADMIN_ROOT = "/usuario";
+    
+  	//AUDITOR
+    public final static String AUDITOR_LISTAR = "auditor/listar";
 
 	// REDIRECT
-	public final static String USUARIO_ROOT = "/usuario/";
+	public final static String AUDITOR_ROOT = "/auditor";
+
+	
 	
 }

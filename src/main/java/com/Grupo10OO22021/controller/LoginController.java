@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.Grupo10OO22021.helpers.ViewRouteHelper;
@@ -16,24 +17,26 @@ import com.Grupo10OO22021.services.impl.UsuarioService;
 
 
 @Controller
+@RequestMapping("/login")
 public class LoginController {
 	
 	
 	@Autowired
 	private UsuarioService userService;
 	
-	
-	@GetMapping("/")
+		
+	@GetMapping("")
 	public String toLogin(){
 		return ViewRouteHelper.LOGIN;
 	}
 
-	@GetMapping("/menu")
+	@GetMapping("/redirectMenu")
 	public RedirectView index(Authentication auth, HttpSession session, Model model) {
-		RedirectView rv = null;
+		//RedirectView rv = null;
+		RedirectView rv=null;
 		//Para conseguir el nombre del usuario de la sesion, ya estoy adentro(?
 		String username= auth.getName();  //USERNAME
-		
+		System.out.println(username);
 		//Si el usuario no esta creado aun
 		if (session.getAttribute("usuario")== null) {
 			//Lo voy a buscar a la BD
@@ -44,17 +47,28 @@ public class LoginController {
 			//vamos a mandar a la vista el usuario.
 			session.setAttribute("usuario", usuario); //Se lo mando a la vista
 			
-			if(usuario.getPerfil().getIdPerfil() == 2) {
+			if(usuario.getPerfil().getNombreRol().equals("ROLE_USER")) {
 				System.out.println(usuario.getPerfil().getNombreRol());
+				//rv = new RedirectView(ViewRouteHelper.MENU_USER);
 				rv = new RedirectView(ViewRouteHelper.MENU_USER);
+				
 			}
-			if(usuario.getPerfil().getIdPerfil() == 1) {
+			if(usuario.getPerfil().getNombreRol().equals("ROLE_AUDITOR")) {
 				System.out.println(usuario.getPerfil().getNombreRol());
-				rv = new RedirectView(ViewRouteHelper.MENU_ADMIN);
+				//rv= new RedirectView (ViewRouteHelper.MENU_AUDITOR);
+				rv = new RedirectView(ViewRouteHelper.AUDITOR_ROOT);
+			}
+			
+			if(usuario.getPerfil().getNombreRol().equals("ROLE_ADMIN")) {
+				System.out.println(usuario.getPerfil().getNombreRol());
+				//rv = new RedirectView(ViewRouteHelper.MENU_ADMIN);
+				rv = new RedirectView(ViewRouteHelper.ADMIN_ROOT);
+				
 			}
 			
 		}
 		return rv;
 
 	}
+
 }
