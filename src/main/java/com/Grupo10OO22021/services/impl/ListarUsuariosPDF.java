@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
-import com.Grupo10OO22021.entities.Usuario;
 import com.Grupo10OO22021.helpers.ViewRouteHelper;
+import com.Grupo10OO22021.models.UsuarioModel;
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
@@ -22,14 +22,14 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-@Component("usuarios/listar")
+@Component(ViewRouteHelper.AUDITOR_LISTAR)
 
-public class ListaClientesPDF extends AbstractPdfView{
+public class ListarUsuariosPDF extends AbstractPdfView{
 
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Usuario> listaUsuario=(List<Usuario>) model.get("usuarios");
+		List<UsuarioModel> listaUsuario=(List<UsuarioModel>) model.get("usuarios");
 		
 		document.setPageSize(PageSize.LETTER.rotate());
 		document.setMargins(-20, -20, 40, 20);
@@ -102,7 +102,7 @@ public class ListaClientesPDF extends AbstractPdfView{
 		
 		
 		
-		for (Usuario user : listaUsuario) {
+		for (UsuarioModel user : listaUsuario) {
 			String dni = user.getDni()+"";
 			
 			celda = new PdfPCell(new Phrase(user.getNombre(), fuenteDataCeldas));

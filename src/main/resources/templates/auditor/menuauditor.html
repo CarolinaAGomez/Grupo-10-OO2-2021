@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP OO2 GRUPO 10</title>
     <link href="../static/css/home.css" th:href="@{/css/home.css}"  rel="stylesheet">
-    <link href="../static/css/listado.css" th:href="@{/css/listado.css}"  rel="stylesheet">
     <script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -29,6 +28,7 @@
 										</form>
 									</li>
 								</ul>
+								
 							</div>
 						</li>
                     </ul>
@@ -36,37 +36,17 @@
             </div>
         </div>
         <div class="contenido">
-			<div class="backButton">
-                <a th:href="@{/usuario}"><i class="fas fa-arrow-left"></i></a>
-            </div>
-            <div class="optionTable">
-				<a th:href="@{/perfil/new}">Nuevo perfil</a>
-                <a th:href="@{/perfil/(format=pdf)}"  title="Exportar a pdf" target=_blank>Exportar como PDF</a>
-			</div>
-            <div class="table">
-                <table>
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Nombre</th>
-							<th>Acción</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="perfil:${perfil}">
-							<td><span th:text="${perfil.idPerfil}"></td>
-							<td><span th:text="${perfil.nombreRol}"></td>
-							<td>
-								<form action="#" th:action ="@{/perfil/update/{id}(id=${perfil.idPerfil})}" method="Get" >
-									<button type="submit"><i class="fas fa-edit"></i></button> 
-								</form>
-								<form action="#" th:action ="@{/perfil/delete/{id}(id=${perfil.idPerfil})}" method="POST" >
-									<button type="submit"><i class="fas fa-trash"></i></button> 
-								</form>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="itemListados">
+                <div> 
+                    <a th:href="@{/auditor/listarAuditores}" >Auditores 
+                        <i class="fas fa-users"></i>
+                    </a>
+                </div>
+                <div>
+                    <a th:href="@{/auditor/listarAdmins}" >Administradores
+                        <i class="fas fa-user-tie"></i>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="footer">
@@ -92,6 +72,3 @@
 	</script>
 </body>
 </html>
-
-
-<!--  -->

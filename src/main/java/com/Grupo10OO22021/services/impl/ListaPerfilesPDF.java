@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
 import com.Grupo10OO22021.entities.Perfil;
-import com.Grupo10OO22021.entities.Usuario;
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
@@ -40,7 +39,7 @@ List<Perfil> listaPerfil=(List<Perfil>) model.get("perfil");
 		PdfPTable tablaTitulo = new PdfPTable(1);
 		PdfPCell celda= null;
 		
-		Font fuenteTitulo= FontFactory.getFont("Helvetica",16,Color.RED);
+		Font fuenteTitulo= FontFactory.getFont("Helvetica",16,Color.BLACK);
 		Font fuenteTituloColumnas = FontFactory.getFont(FontFactory.HELVETICA_BOLD ,12,Color.BLUE);
 		Font fuenteDataCeldas = FontFactory.getFont(FontFactory.COURIER ,10,Color.BLACK);
 		
