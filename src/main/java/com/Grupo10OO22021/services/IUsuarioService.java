@@ -2,7 +2,6 @@ package com.Grupo10OO22021.services;
 
 import java.util.List;
 
-import com.Grupo10OO22021.entities.Usuario;
 import com.Grupo10OO22021.models.UsuarioModel;
 
 public interface IUsuarioService {
@@ -10,7 +9,7 @@ public interface IUsuarioService {
 	
 	//LA INTERFACE SERVICE TRABAJA CON EL MODEL
 	
-	public List<Usuario> GetAll();
+	public List<UsuarioModel> GetAll();
 	
 	public UsuarioModel traerUsuarioPorId(long id);
 

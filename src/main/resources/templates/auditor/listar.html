@@ -37,11 +37,12 @@
         </div>
         <div class="contenido">
 			<div class="backButton">
-                <a th:href="@{/usuario}"><i class="fas fa-arrow-left"></i></a>
+                <a th:href="@{/auditor}"><i class="fas fa-arrow-left"></i></a>
             </div>
             <div class="optionTable">
-				<a th:href="@{/usuario/alta}">Nuevo Usuario</a>
-			</div>
+                <a th:if="${usuarios[0].perfil.nombreRol == 'ROLE_ADMIN'}" th:href="@{/auditor/listarAdmins/(format=pdf)}"  title="Exportar a pdf" target=_blank>Exportar como PDF</a>
+                <a th:if="${usuarios[0].perfil.nombreRol == 'ROLE_AUDITOR'}" th:href="@{/auditor/listarAuditores/(format=pdf)}"  title="Exportar a pdf" target=_blank>Exportar como PDF</a>
+            </div>
             <div class="table">
                 <table>
                     <thead>
@@ -52,32 +53,24 @@
                             <th>Email</th>
                             <th>Username</th>
                             <th>Perfil</th>
-                            <th>Acción</th>
                         </tr>
+                        <tbody>
+                            <tr th:each="usuario:${usuarios}">
+                                <td th:text="${usuario.nombre}"></td>
+                                <td th:text="${usuario.apellido}"></td>
+                                <td th:text="${usuario.dni}"></td>
+                                <td th:text="${usuario.mail}"></td>
+                                <td th:text="${usuario.username}"></td>
+                                <td>
+                                    <th:block th:each="perfil,iter:${usuario.perfil}">
+                                        <label th:text="${perfil.nombreRol}"></label>
+                                        <th:block th:if="${!iter.last}"></th:block></th:block>
+                                    </th:block>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
                     </thead>
-                    <tbody>
-                        <tr th:each="usuario:${usuarios}">
-                            <td th:text="${usuario.nombre}"></td>
-                            <td th:text="${usuario.apellido}"></td>
-                            <td th:text="${usuario.dni}"></td>
-                            <td th:text="${usuario.mail}"></td>
-                            <td th:text="${usuario.username}"></td>
-                            <td>
-                                <th:block th:each="perfil,iter:${usuario.perfil}">
-                                    <label th:text="${perfil.nombreRol}"></label>
-                                    <th:block th:if="${!iter.last}"></th:block></th:block>
-                                </th:block>
-                            </td>
-                            <td>
-                                <form action="#" th:action ="@{/usuario/update/}+${usuario.idUsuario}" method="Get" >
-                                    <button type="submit"><i class="fas fa-edit"></i></button> 
-                                </form>
-                                <form action="#" th:action ="@{/usuario/baja/}+${usuario.idUsuario}" method="POST" >
-                                    <button type="submit"><i class="fas fa-trash"></i></button> 
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
         </div>

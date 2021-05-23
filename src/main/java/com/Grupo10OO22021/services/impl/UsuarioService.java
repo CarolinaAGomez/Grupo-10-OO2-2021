@@ -1,5 +1,6 @@
 package com.Grupo10OO22021.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,12 @@ public class UsuarioService implements IUsuarioService {
 	
 	
 	@Override
-	public List<Usuario> GetAll() {
-		
-		return userRepo.findAll();
+	public List<UsuarioModel> GetAll() {
+		List<UsuarioModel> usuarios = new ArrayList<>();
+		for(Usuario u : userRepo.findAll()){
+			usuarios.add(userConverter.entityToModel(u));
+		}
+		return usuarios;
 	}
 
 	@Override

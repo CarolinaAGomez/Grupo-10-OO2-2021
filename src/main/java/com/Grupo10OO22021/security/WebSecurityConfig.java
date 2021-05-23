@@ -42,19 +42,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests() 
 				.antMatchers(resources).permitAll()  //que permita a todo lo que configure arriba
-				.antMatchers("/","/login").permitAll() //a este path puede ingresar cualquiera
-				.antMatchers("/user*").hasAnyRole("ADMIN","USER") //anyrole para poder poner mas de un rol
-				.antMatchers("/admin*").hasRole("ADMIN") 
+				.antMatchers("/").permitAll() //a este path puede ingresar cualquiera
+				//.antMatchers("/menuuser").permitAll()
+				//.antMatchers("/user/**").hasAnyRole("ADMIN","USER") //anyrole para poder poner mas de un rol
+				.antMatchers("/auditor/**").hasRole("AUDITOR") //anyrole para poder poner mas de un rol
+				.antMatchers("/usuario/**").hasRole("ADMIN") 
+				.antMatchers("/perfil/**").hasRole("ADMIN") 
 				.anyRequest().authenticated() //Caulquier otra url tiene que estar autenticada
 			.and()
 				.formLogin() //form de login
 				.loginPage("/login") //va a la pagina de controller y toma la utl de login que lo llevaria a indx
-				.permitAll().defaultSuccessUrl("/menu") //Una vez que se loguea que vaya a menu
+				.permitAll().defaultSuccessUrl("/login/redirectMenu") //Una vez que se loguea que vaya a menu
 				.failureUrl("/login?error=true")  //Si falla que vaya a la pagina de login
 	            .usernameParameter("username")
 	            .passwordParameter("password") //LO MISMO TIENE QUE ESTAR EN LA VISTA.-
 	        .and()
-	        	.logout().permitAll().logoutSuccessUrl("/logout");
+	        	.logout().permitAll().logoutSuccessUrl("/");
 	}
 	  
 
