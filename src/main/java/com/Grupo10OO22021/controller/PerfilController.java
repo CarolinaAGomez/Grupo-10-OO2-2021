@@ -65,21 +65,3 @@ public class PerfilController {
 		return new RedirectView(ViewRouteHelper.PERFIL_ROOT);
 	}
 }
-
-
-/*
- * 
- * 
-	@GetMapping("/by_name/{name}")
-	public ModelAndView getByName(@PathVariable("name") String name) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PERSON_UPDATE);
-		mAV.addObject("person", personService.findByName(name));
-		return mAV;
-	}
-	
- * 
- * @PostMapping("/update")
-	public RedirectView update(@ModelAttribute("person") PersonModel personModel) {
-		personService.insertOrUpdate(personModel);
-		return new RedirectView(ViewRouteHelper.PERSON_ROOT);
-	}*/
