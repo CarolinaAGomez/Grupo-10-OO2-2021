@@ -3,8 +3,6 @@ package com.Grupo10OO22021.models;
 
 
 public class UsuarioModel {
-	
-	
 	private long idUsuario;
 	private String nombre;
 	private String apellido;
@@ -16,14 +14,25 @@ public class UsuarioModel {
 	public UsuarioModel() {
 	}
 	
-	public UsuarioModel(String nombre, String apellido, int dni, String mail, String username, String password) {
-		super();
+	public UsuarioModel(long idUsuario, String nombre, String apellido, int dni, String mail, String username, String password) {
+		this.setIdUsuario(idUsuario);
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 		this.mail = mail;
 		this.username = username;
 		this.password = password;
+	}
+
+	public UsuarioModel(long idUsuario, String nombre, String apellido, int dni, String mail, String username, String password,PerfilModel perfil) {
+		this.setIdUsuario(idUsuario);
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.mail = mail;
+		this.username = username;
+		this.password = password;
+		this.perfil = perfil;
 	}
 
 	public long getIdUsuario() {
@@ -90,9 +99,11 @@ public class UsuarioModel {
 		this.perfil = perfil;
 	}
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "idUsuario: " + idUsuario + "\napellido: " + apellido + "\nnombre: " + nombre + "\ndni: " + dni + "\nmail: " + mail
+				+"\nusername: " + username +  "\npassword: " + password + "\nperfil: " + perfil;
 	}
+}
 
 

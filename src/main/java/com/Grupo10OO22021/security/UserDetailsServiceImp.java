@@ -24,7 +24,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username)    {
-		com.Grupo10OO22021.entities.Usuario user =  userRepository.findByUsername(username);
+		com.Grupo10OO22021.entities.Usuario user =  userRepository.findByUsernameAndFetchPerfilEagerly(username);
 
 	    //Mapear nuestra lista de Authority  de spring security 
 	    List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();  //se puede hacer tmb List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();???? ACA SOLO CREA UNA LISTA

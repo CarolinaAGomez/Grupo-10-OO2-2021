@@ -2,33 +2,46 @@ package com.Grupo10OO22021.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
+@Table(name = "usuario")
 public class Usuario {
-	
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // auto-increment igual a true
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idUsuario;
+
+	@Column(name = "nombre")
 	private String nombre;
+
+	@Column(name = "apellido")
 	private String apellido;
+
+	@Column(name = "dni")
 	private int dni;
+
+	@Column(name = "mail")
 	private String mail;
+
+	@Column(name = "username")
 	private String username; 
+
+	@Column(name = "password")
 	private String password;
 	
-	@ManyToOne  //1 USUARIO TIENE UN ROL. IdPerfil ES DE LA pk de rol
+	@ManyToOne(fetch = FetchType.LAZY) //1 USUARIO TIENE UN ROL. IdPerfil ES DE LA pk de rol
 	@JoinColumn(name="idPerfil")
 	private Perfil perfil;
 	 
@@ -44,8 +57,8 @@ public class Usuario {
 	public Usuario () {}
 	
 	
-	public Usuario(String nombre, String apellido, int dni, String mail, String username, String password) {
-		super();
+	public Usuario(long idUsuario,String nombre, String apellido, int dni, String mail, String username, String password) {
+		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -54,9 +67,19 @@ public class Usuario {
 		this.password = password;
 	}
 	
+	public Usuario(long idUsuario,String nombre, String apellido, int dni, String mail, String username, String password,Perfil perfil) {
+		this.idUsuario = idUsuario;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.mail = mail;
+		this.username = username;
+		this.password = password;
+		this.perfil  = perfil;
+	}
+
 	public Usuario( String username, String password, Perfil perfil) {
 		super();
-		
 		this.username = username;
 		this.password = password;
 		this.perfil=perfil;
@@ -164,6 +187,12 @@ public class Usuario {
 
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Usuario [dni=" + dni + "]";
 	}
 
 

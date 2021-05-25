@@ -41,41 +41,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests() 
-	        .antMatchers(resources).permitAll()  //que permita a todo lo que configure arriba
-	        .antMatchers("/","/login").permitAll() //a este path puede ingresar cualquiera
-	        
-	        
-	        /*
-	        Spring security usa indistintamente hasRole()y, con hasAuthority()Spring security 4, es más consistente y también debemos ser consistentes con nuestro enfoque al usar el método hasRole()y hasAuthority(). Tengamos en cuenta las siguientes reglas simples.
-
-	        Siempre agregue el ROLE_mientras usa el hasAuthority()método (p hasAuthority("ROLE_CUSTOMER"). Ej .).
-	        Mientras lo usa hasRole(), no agregue el ROLE_prefijo, ya que Spring security ( hasRole("CUSTOMER")) lo agregará automáticamente .
-	       */ 
-	        
-	        
-	      //.antMatchers("/admin**").access("hasRole('ROLE_ADMIN')") //a todo lo que sea /admin tiene que teebr el rol de admin SOLO FUNCIONA SI LE PONGO ROLE_ADMIN EN LA BASE DE DATOS
-		  // .antMatchers("/user**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-		  //.antMatchers("/user*").hasRole("USER") 
-
-	        
-	        .antMatchers("/user*").hasAnyRole("ADMIN","USER") //anyrole para poder poner mas de un rol
-	      
-	        .antMatchers("/admin*").hasRole("ADMIN") 
-	       
-	        
-	            .anyRequest().authenticated() //Caulquier otra url tiene que estar autenticada
-	            .and()
-	        .formLogin() //form de login
-	            .loginPage("/login") //va a la pagina de controller y toma la utl de login que lo llevaria a indx
-	            .permitAll() //Ingresan todos.
-	            .defaultSuccessUrl("/menu") //Una vez que se loguea que vaya a menu
-	            .failureUrl("/login?error=true")  //Si falla que vaya a la pagina de login
+				.antMatchers(resources).permitAll()  //que permita a todo lo que configure arriba
+				.antMatchers("/").permitAll() //a este path puede ingresar cualquiera
+				.antMatchers("/auditor/**").hasRole("AUDITOR") //anyrole para poder poner mas de un rol
+				.antMatchers("/usuario/**").hasRole("ADMIN") 
+				.antMatchers("/perfil/**").hasRole("ADMIN") 
+				.anyRequest().authenticated() //Caulquier otra url tiene que estar autenticada
+			.and()
+				.formLogin() //form de login
+				.loginPage("/login") //va a la pagina de controller y toma la utl de login que lo llevaria a indx
+				.permitAll().defaultSuccessUrl("/login/redirectMenu") //Una vez que se loguea que vaya a menu
+				.failureUrl("/login?error=true")  //Si falla que vaya a la pagina de login
 	            .usernameParameter("username")
 	            .passwordParameter("password") //LO MISMO TIENE QUE ESTAR EN LA VISTA.-
-	            .and()
-	        .logout()
-	            .permitAll()
-	            .logoutSuccessUrl("/login?logout");
+	        .and()
+	        	.logout().permitAll().logoutSuccessUrl("/");
 	}
 	  
 

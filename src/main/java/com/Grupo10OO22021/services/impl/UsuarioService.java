@@ -1,5 +1,6 @@
 package com.Grupo10OO22021.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +28,16 @@ public class UsuarioService implements IUsuarioService {
 	
 	
 	@Override
-	public List<Usuario> GetAll() {
-		
-		return userRepo.findAll();
+	public List<UsuarioModel> GetAll() {
+		List<UsuarioModel> usuarios = new ArrayList<>();
+		for(Usuario u : userRepo.findAll()){
+			usuarios.add(userConverter.entityToModel(u));
+		}
+		return usuarios;
 	}
 
 	@Override
-	public UsuarioModel traerUsuario(long id) {
+	public UsuarioModel traerUsuarioPorId(long id) {
 		
 		//COMO EL REPO TRABAJA CON ENTIDAD HAY QUE PASARLO A MODEL PORQUE LA INTERFACE SERVICE TRABAJA CON MODEL
 		UsuarioModel usuario= userConverter.entityToModel(userRepo.findByIdUsuario(id));
@@ -41,23 +45,35 @@ public class UsuarioService implements IUsuarioService {
 	}
 
 	@Override
-	public UsuarioModel traerUsuario(int dni) {
-		UsuarioModel usuario= userConverter.entityToModel(userRepo.findByDni(dni));
+	public UsuarioModel traerUsuarioYPerfilPorId(long id){
+		UsuarioModel usuario = userConverter.entityToModel(userRepo.findByIdUsuarioAndFetchPerfilEagerly(id));
+		return usuario ;
+	}
+
+	@Override
+	public UsuarioModel traerUsuarioYPerfilPorUsername(String username){
+		UsuarioModel usuario = userConverter.entityToModel(userRepo.findByUsernameAndFetchPerfilEagerly(username));
+		return usuario;
+	}
+	@Override
+	public UsuarioModel traerUsuarioPorUsername(String username){
+		UsuarioModel usuario = userConverter.entityToModel(userRepo.findByUsername(username));
+		return usuario;
+	}
+	@Override
+	public UsuarioModel traerUsuarioPorDni(int dni) {
+		UsuarioModel usuario = userConverter.entityToModel(userRepo.findByDni(dni));
 		return usuario;
 	}
 
 	@Override
-	public UsuarioModel insertOrUpdate(UsuarioModel usuario) throws Exception {
-		
-		
-		if (traerUsuario(usuario.getDni())!=null) {
-			throw new Exception("El usuario ya se encuentra en la base de datos");
-		}
-		//convierte el modelo en entidad
-		Usuario user= userConverter.modelToEntity(usuario);
-		//convierte nuevamente en modelo para retonarlo y guarda el entity que se convirtio anteriormente.   SETEA LA CLAVE PARA QUE SE ENCRIPTE
-		user.setPassword(passwordEnconder.encode(user.getPassword()));
-		return userConverter.entityToModel(userRepo.save(user));
+	public UsuarioModel insertOrUpdate(UsuarioModel usuario){
+		//SETEA LA CLAVE PARA QUE SE ENCRIPTE
+		usuario.setPassword(passwordEnconder.encode(usuario.getPassword()));
+		//convierte el modelo en entidad y guarda el entity que se convirtio anteriormente. 
+		Usuario user= userRepo.save(userConverter.modelToEntity(usuario));
+		//convierte nuevamente en modelo para retonarlo
+		return userConverter.entityToModel(user);
 	}
 
 	@Override
