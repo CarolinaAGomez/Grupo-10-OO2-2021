@@ -47,14 +47,12 @@
                 <table>
 					<thead>
 						<tr>
-							<th>Id</th>
 							<th>Nombre</th>
 							<th>Acción</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="perfil:${perfil}">
-							<td><span th:text="${perfil.idPerfil}"></td>
 							<td><span th:text="${perfil.nombreRol}"></td>
 							<td>
 								<form action="#" th:action ="@{/perfil/update/{id}(id=${perfil.idPerfil})}" method="Get" >
@@ -92,6 +90,3 @@
 	</script>
 </body>
 </html>
-
-
-<!--  -->

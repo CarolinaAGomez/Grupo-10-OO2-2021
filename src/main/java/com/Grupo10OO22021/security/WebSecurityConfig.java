@@ -43,8 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			http.authorizeRequests() 
 				.antMatchers(resources).permitAll()  //que permita a todo lo que configure arriba
 				.antMatchers("/").permitAll() //a este path puede ingresar cualquiera
-				//.antMatchers("/menuuser").permitAll()
-				//.antMatchers("/user/**").hasAnyRole("ADMIN","USER") //anyrole para poder poner mas de un rol
 				.antMatchers("/auditor/**").hasRole("AUDITOR") //anyrole para poder poner mas de un rol
 				.antMatchers("/usuario/**").hasRole("ADMIN") 
 				.antMatchers("/perfil/**").hasRole("ADMIN") 
