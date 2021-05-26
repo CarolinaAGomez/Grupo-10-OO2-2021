@@ -3,6 +3,7 @@ package com.Grupo10OO22021.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.Grupo10OO22021.converters.PerfilConverter;
@@ -12,13 +13,15 @@ import com.Grupo10OO22021.repository.IPerfilRepository;
 import com.Grupo10OO22021.services.IPerfilService;
 
 
-@Service
+@Service("perfilService")
 public class PerfilService implements IPerfilService{
 
 	@Autowired
+	@Qualifier("perfilRepository")
 	IPerfilRepository perfilRepository;
 	
 	@Autowired
+	@Qualifier("perfilConverter")
 	PerfilConverter perfilConverter;
 	
 	@Override

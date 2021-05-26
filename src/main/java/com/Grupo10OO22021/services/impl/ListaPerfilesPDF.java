@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
 import com.Grupo10OO22021.entities.Perfil;
+import com.Grupo10OO22021.helpers.ViewRouteHelper;
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
@@ -22,15 +23,15 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 
-@Component("perfil/index")
+@Component(ViewRouteHelper.PERFIL_INDEX)
 public class ListaPerfilesPDF extends AbstractPdfView {
 
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-@SuppressWarnings("unchecked")
-List<Perfil> listaPerfil=(List<Perfil>) model.get("perfil");
+		@SuppressWarnings("unchecked")
+		List<Perfil> listaPerfil=(List<Perfil>) model.get("perfil");
 		
 		document.setPageSize(PageSize.LETTER.rotate());
 		document.setMargins(-20, -20, 40, 20);

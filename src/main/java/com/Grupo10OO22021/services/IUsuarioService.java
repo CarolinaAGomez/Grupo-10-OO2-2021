@@ -5,11 +5,10 @@ import java.util.List;
 import com.Grupo10OO22021.models.UsuarioModel;
 
 public interface IUsuarioService {
-	
-	
-	//LA INTERFACE SERVICE TRABAJA CON EL MODEL
-	
+		
 	public List<UsuarioModel> GetAll();
+
+	public List<UsuarioModel> traerUsuariosPorRol(String nombreRol);
 	
 	public UsuarioModel traerUsuarioPorId(long id);
 
@@ -25,7 +24,4 @@ public interface IUsuarioService {
 	
 	public boolean remove (long idUsuario);
 	
-	
-	
-
 }
