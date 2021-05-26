@@ -1,0 +1,1 @@
+create database if not exists `grupo-10-bdd-oo2-2021`;
