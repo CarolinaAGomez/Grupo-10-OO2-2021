@@ -1,16 +1,18 @@
 package com.Grupo10OO22021.converters;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.Grupo10OO22021.entities.Usuario;
 import com.Grupo10OO22021.models.UsuarioModel;
 
 
-@Component
+@Component("usuarioConverter")
 public class UsuarioConverter {
 	
 	@Autowired
+	@Qualifier("perfilConverter")
 	private PerfilConverter perfilConverter;
 	
 	public UsuarioModel entityToModel(Usuario user) {

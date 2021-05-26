@@ -13,7 +13,7 @@
     align-items: center;
     background-color: rgb(229, 229, 231);
 }
-.contenedor .login{
+.contenedor .form{
     text-align: center;
     display: block;
     background-color: white;
@@ -21,22 +21,22 @@
     border-radius: 10px;
     box-shadow: 7px 7px 14px rgba(0, 0, 0, 0.541);
 }
-.contenedor .login h2{
+.contenedor .form h2{
     display: block;
     margin-bottom: 10%;
     padding: 10% 0;
     font-size:2.4vw;
     color: rgb(23, 24, 56);
 }
-.contenedor .login form{
+.contenedor .form form{
     display: block;
 }
-.contenedor .login form .input{
+.contenedor .form form .input{
     display: flex;
     justify-content: space-around;
     align-items: center
 }
-.contenedor .login form .input i{
+.contenedor .form form .input i{
     display: inline-block;
     width: 11%;
     margin-top: 7%;
@@ -44,7 +44,7 @@
     padding: 5% 10% 5.5% 0%;
     color: rgb(15, 16, 51);
 }
-.contenedor .login form .input input{
+.contenedor .form form .input input{
     display: inline-block;
     padding: 5% 3%;
     margin-top: 5%;
@@ -56,7 +56,7 @@
     border-bottom: 1px rgb(23, 24, 56) solid;
     width: 100%;
 }
-.contenedor .login form select{
+.contenedor .form form select{
     display: inline-block;
     width: 100%;
     padding: 5% 3%;
@@ -66,7 +66,7 @@
     font-size: 1vw;
     font-weight: bold;
 }
-.contenedor .login form button{
+.contenedor .form form button{
     width: 55%;
     background-color: rgb(23, 24, 56);
     color:rgb(230, 227, 227);
@@ -78,11 +78,11 @@
     border-radius: 40px;
     cursor: pointer;
 }
-.contenedor .login form button:hover{
+.contenedor .form form button:hover{
     background-color: rgb(83, 84, 133);
     border: 1px rgb(23, 24, 56) solid;
 }
-.contenedor .login form .alerta{
+.contenedor .form form .alerta{
     user-select: none;
     margin-top: 8%;
     color: rgb(172, 9, 9);

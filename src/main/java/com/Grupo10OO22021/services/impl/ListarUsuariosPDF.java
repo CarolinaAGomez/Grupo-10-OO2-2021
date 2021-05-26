@@ -23,12 +23,13 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 @Component(ViewRouteHelper.AUDITOR_LISTAR)
-
 public class ListarUsuariosPDF extends AbstractPdfView{
 
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		@SuppressWarnings("unchecked")
 		List<UsuarioModel> listaUsuario=(List<UsuarioModel>) model.get("usuarios");
 		
 		document.setPageSize(PageSize.LETTER.rotate());
