@@ -41,10 +41,9 @@ public class Usuario {
 	@Column(name = "password")
 	private String password;
 	
-	@ManyToOne(fetch = FetchType.LAZY) //1 USUARIO TIENE UN ROL. IdPerfil ES DE LA pk de rol
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idPerfil")
 	private Perfil perfil;
-	 
 
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -52,10 +51,7 @@ public class Usuario {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
-	
-	
 	public Usuario () {}
-	
 	
 	public Usuario(long idUsuario,String nombre, String apellido, int dni, String mail, String username, String password) {
 		this.idUsuario = idUsuario;
@@ -66,7 +62,6 @@ public class Usuario {
 		this.username = username;
 		this.password = password;
 	}
-	
 	public Usuario(long idUsuario,String nombre, String apellido, int dni, String mail, String username, String password,Perfil perfil) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
@@ -110,95 +105,56 @@ public class Usuario {
 	public String getApellido() {
 		return apellido;
 	}
-
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
-
 	public int getDni() {
 		return dni;
 	}
-
-
 	public void setDni(int dni) {
 		this.dni = dni;
 	}
-
-
 	public String getMail() {
 		return mail;
 	}
-
 
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
-
 	public String getUsername() {
 		return username;
 	}
 
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-
 	public String getPassword() {
 		return password;
 	}
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
-
-
-
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
-
-
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
-
-
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
-
-
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
-
 	public Perfil getPerfil() {
 		return perfil;
 	}
-
-
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
-
-
 	@Override
 	public String toString() {
 		return "Usuario [dni=" + dni + "]";
 	}
-
-
-
-	
-	
-	
-	
 }
