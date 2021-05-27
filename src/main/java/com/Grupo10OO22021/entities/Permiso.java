@@ -27,7 +27,7 @@ public class Permiso {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersona")
-	protected Persona persona;
+	protected Persona pedido;
 
 	@Column(name = "fecha")
 	protected LocalDate fecha;
@@ -38,12 +38,19 @@ public class Permiso {
 	public Permiso() {
 	}
 
-	public Permiso(int idPermiso, Persona persona, LocalDate fecha, Set<Lugar> desdeHasta) {
+	public Permiso(int idPermiso, Persona pedido, LocalDate fecha, Set<Lugar> desdeHasta) {
 		super();
 		this.idPermiso = idPermiso;
-		this.persona = persona;
+		this.pedido = pedido;
 		this.fecha = fecha;
 		this.desdeHasta = desdeHasta;
+	}
+
+	public Permiso(int idPermiso, Persona pedido, LocalDate fecha) {
+		super();
+		this.idPermiso = idPermiso;
+		this.pedido = pedido;
+		this.fecha = fecha;
 	}
 
 	public int getIdPermiso() {
@@ -54,12 +61,12 @@ public class Permiso {
 		this.idPermiso = idPermiso;
 	}
 
-	public Persona getPersona() {
-		return persona;
+	public Persona getPedido() {
+		return pedido;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+	public void setPedido(Persona pedido) {
+		this.pedido = pedido;
 	}
 
 	public LocalDate getFecha() {
@@ -78,10 +85,5 @@ public class Permiso {
 		this.desdeHasta = desdeHasta;
 	}
 
-	@Override
-	public String toString() {
-		return "Permiso [idPermiso=" + idPermiso + ", persona=" + persona + ", fecha=" + fecha + ", desdeHasta="
-				+ desdeHasta + "]";
-	}
 
 }
