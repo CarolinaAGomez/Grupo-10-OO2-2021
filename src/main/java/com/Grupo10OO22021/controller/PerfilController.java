@@ -1,6 +1,8 @@
 package com.Grupo10OO22021.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -20,9 +22,11 @@ import com.Grupo10OO22021.services.impl.PerfilService;
 @RequestMapping("/perfil")
 public class PerfilController {
 
-	@Autowired()
+	@Autowired
+	@Qualifier("perfilService")
 	private PerfilService perfilService;
 	
+	@PreAuthorize("hasRol('ROLE_ADMIN')")
 	@GetMapping("")
 	public ModelAndView vista() {
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.PERFIL_INDEX);
@@ -32,19 +36,21 @@ public class PerfilController {
 		return mV;
 	}
 	
+	@PreAuthorize("hasRol('ROLE_ADMIN')")
 	@GetMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.PERFIL_NEW);
 		mV.addObject("perfil", new PerfilModel());
 		return mV;
 	}
-	
+	@PreAuthorize("hasRol('ROLE_ADMIN')")
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("perfil") PerfilModel perfilModel) {
 		perfilService.insertOrUpdate(perfilModel);
 		return new RedirectView(ViewRouteHelper.PERFIL_ROOT);
 	}
 
+	@PreAuthorize("hasRol('ROLE_ADMIN')")
 	@PostMapping("/delete/{id}")
 	public RedirectView delete(@PathVariable("id") int id) {
 		perfilService.remove(id);
@@ -52,6 +58,7 @@ public class PerfilController {
 		return new RedirectView(ViewRouteHelper.PERFIL_ROOT);
 	}
 	
+	@PreAuthorize("hasRol('ROLE_ADMIN')")
 	@GetMapping("/update/{id}")
 	public ModelAndView updateGet(@PathVariable("id") int id) {
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.PERFIL_UPDATE);
@@ -59,6 +66,7 @@ public class PerfilController {
 		return mV;
 	}
 	
+	@PreAuthorize("hasRol('ROLE_ADMIN')")
 	@PostMapping("/updatePost")
 	public RedirectView updatePost(@ModelAttribute("perfil") PerfilModel perfilModel) {
 		perfilService.insertOrUpdate(perfilModel);
