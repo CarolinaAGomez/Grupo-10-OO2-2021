@@ -3,20 +3,17 @@ package com.Grupo10OO22021.models;
 import java.time.LocalDate;
 import java.util.Set;
 
-import com.Grupo10OO22021.entities.Lugar;
-import com.Grupo10OO22021.entities.Rodado;
-
 public class PermisoModel {
 
 	private int idPermiso;
 	private PersonaModel pedido;
 	private LocalDate fecha;
-	private Set<Lugar> desdeHasta;
+	private Set<LugarModel> desdeHasta;
 
 	public PermisoModel() {
 	}
 
-	public PermisoModel(int idPermiso, PersonaModel pedido, LocalDate fecha, Set<Lugar> desdeHasta) {
+	public PermisoModel(int idPermiso, PersonaModel pedido, LocalDate fecha, Set<LugarModel> desdeHasta) {
 		super();
 		this.idPermiso = idPermiso;
 		this.pedido = pedido;
@@ -57,11 +54,11 @@ public class PermisoModel {
 		this.fecha = fecha;
 	}
 
-	public Set<Lugar> getDesdeHasta() {
+	public Set<LugarModel> getDesdeHasta() {
 		return desdeHasta;
 	}
 
-	public void setDesdeHasta(Set<Lugar> desdeHasta) {
+	public void setDesdeHasta(Set<LugarModel> desdeHasta) {
 		this.desdeHasta = desdeHasta;
 	}
 

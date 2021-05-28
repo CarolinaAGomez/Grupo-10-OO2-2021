@@ -12,7 +12,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "permisoPeriodo")
+@Table(name = "PermisoPeriodo")
 @PrimaryKeyJoinColumn(name = "idPermiso")
 public class PermisoPeriodo extends Permiso {
 
@@ -29,24 +29,15 @@ public class PermisoPeriodo extends Permiso {
 		super();
 	}
 
-	public PermisoPeriodo(int cantDias, boolean vacaciones, Rodado rodado) {
-		super();
-		this.cantDias = cantDias;
-		this.vacaciones = vacaciones;
-		this.rodado = rodado;
-	}
-
 	public PermisoPeriodo(int idPermiso, Persona persona, LocalDate fecha, Set<Lugar> desdeHasta, int cantDias,
 			boolean vacaciones, Rodado rodado) {
 		super(idPermiso, persona, fecha, desdeHasta);
-		// TODO Auto-generated constructor stub
 		this.cantDias = cantDias;
 		this.vacaciones = vacaciones;
 		this.rodado = rodado;
 	}
 
-	public PermisoPeriodo(int idPermiso, Persona persona, LocalDate fecha, int cantDias, boolean vacaciones,
-			Rodado rodado) {
+	public PermisoPeriodo(int idPermiso, Persona persona, LocalDate fecha, int cantDias, boolean vacaciones,Rodado rodado) {
 		super(idPermiso, persona, fecha);
 		this.cantDias = cantDias;
 		this.vacaciones = vacaciones;

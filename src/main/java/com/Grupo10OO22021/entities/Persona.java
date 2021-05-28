@@ -8,12 +8,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "persona")
+@Table(name = "Persona")
 public class Persona {
 
 	@Id
@@ -22,12 +21,15 @@ public class Persona {
 
 	@Column(name = "nombre")
 	private String nombre;
+
 	@Column(name = "apellido")
 	private String apellido;
+
 	@Column(name = "dni")
 	private long dni;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "persona")
-	private Set <Permiso> permiso;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pedido")
+	private Set<Permiso> permiso;
 
 	public Persona() {
 	}

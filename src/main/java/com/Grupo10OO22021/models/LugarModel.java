@@ -2,8 +2,6 @@ package com.Grupo10OO22021.models;
 
 import java.util.Set;
 
-import com.Grupo10OO22021.entities.Permiso;
-
 public class LugarModel {
 
 	private int idLugar;
@@ -23,8 +21,6 @@ public class LugarModel {
 		this.permiso = permiso;
 	}
 	
-	
-
 	public LugarModel(int idLugar, String lugar, String codigoPostal) {
 		super();
 		this.idLugar = idLugar;

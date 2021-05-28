@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.Grupo10OO22021.entities.Rodado;
 import com.Grupo10OO22021.models.RodadoModel;
 
-@Component
+@Component("rodadoConverter")
 public class RodadoConverter {
 	
 	

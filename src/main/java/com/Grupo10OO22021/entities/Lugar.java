@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "lugar")
+@Table(name = "Lugar")
 public class Lugar {
 
 	@Id
@@ -34,8 +34,7 @@ public class Lugar {
 			)
 	private Set<Permiso> permiso;
 
-	public Lugar() {
-	}
+	public Lugar() {}
 
 	public Lugar(int idLugar, String lugar, String codigoPostal, Set<Permiso> permiso) {
 		super();
