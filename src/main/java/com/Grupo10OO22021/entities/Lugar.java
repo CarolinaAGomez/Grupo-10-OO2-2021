@@ -44,6 +44,15 @@ public class Lugar {
 		this.codigoPostal = codigoPostal;
 		this.permiso = permiso;
 	}
+	
+	
+
+	public Lugar(int idLugar, String lugar, String codigoPostal) {
+		super();
+		this.idLugar = idLugar;
+		this.lugar = lugar;
+		this.codigoPostal = codigoPostal;
+	}
 
 	public int getIdLugar() {
 		return idLugar;

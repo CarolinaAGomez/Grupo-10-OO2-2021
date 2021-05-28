@@ -45,6 +45,14 @@ public class PermisoPeriodo extends Permiso {
 		this.rodado = rodado;
 	}
 
+	public PermisoPeriodo(int idPermiso, Persona persona, LocalDate fecha, int cantDias, boolean vacaciones,
+			Rodado rodado) {
+		super(idPermiso, persona, fecha);
+		this.cantDias = cantDias;
+		this.vacaciones = vacaciones;
+		this.rodado = rodado;
+	}
+
 	public int getCantDias() {
 		return cantDias;
 	}

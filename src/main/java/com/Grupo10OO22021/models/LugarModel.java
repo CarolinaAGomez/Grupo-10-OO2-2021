@@ -1,14 +1,29 @@
 package com.Grupo10OO22021.models;
 
+import java.util.Set;
+
+import com.Grupo10OO22021.entities.Permiso;
+
 public class LugarModel {
 
 	private int idLugar;
 	private String lugar;
 	private String codigoPostal;
+	private Set<PermisoModel> permiso;
 
 	public LugarModel() {
 		super();
 	}
+
+	public LugarModel(int idLugar, String lugar, String codigoPostal, Set<PermisoModel> permiso) {
+		super();
+		this.idLugar = idLugar;
+		this.lugar = lugar;
+		this.codigoPostal = codigoPostal;
+		this.permiso = permiso;
+	}
+	
+	
 
 	public LugarModel(int idLugar, String lugar, String codigoPostal) {
 		super();
@@ -41,9 +56,14 @@ public class LugarModel {
 		this.codigoPostal = codigoPostal;
 	}
 
-	@Override
-	public String toString() {
-		return "LugarModel [idLugar=" + idLugar + ", lugar=" + lugar + ", codigoPostal=" + codigoPostal + "]";
+	public Set<PermisoModel> getPermiso() {
+		return permiso;
 	}
+
+	public void setPermiso(Set<PermisoModel> permiso) {
+		this.permiso = permiso;
+	}
+
+	
 
 }

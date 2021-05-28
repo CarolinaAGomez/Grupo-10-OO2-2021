@@ -9,12 +9,12 @@ import com.Grupo10OO22021.models.RodadoModel;
 public class RodadoConverter {
 	
 	
-	public RodadoModel modelToEntity(Rodado rodado) {
+	public RodadoModel entityToModel(Rodado rodado) {
 		
 		return new RodadoModel(rodado.getIdRodado(), rodado.getDominio(), rodado.getVehiculo());
 	}
 	
-	public Rodado entityToModel(RodadoModel rodadomodel) {
+	public Rodado modelToEntity(RodadoModel rodadomodel) {
 		
 		return new Rodado(rodadomodel.getIdRodado(), rodadomodel.getDominio(), rodadomodel.getVehiculo());
 	}
