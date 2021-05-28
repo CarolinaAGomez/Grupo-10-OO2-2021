@@ -7,8 +7,7 @@ public class PersonaModel {
 	private String apellido;
 	private long dni;
 
-	public PersonaModel() {
-	}
+	public PersonaModel() {}
 
 	public PersonaModel(int idPersona, String nombre, String apellido, long dni) {
 		super();
