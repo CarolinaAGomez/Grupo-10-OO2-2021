@@ -1,25 +1,49 @@
 package com.Grupo10OO22021.models;
 
+import java.time.LocalDate;
+import java.util.Set;
+
 import javax.persistence.Column;
 
+import com.Grupo10OO22021.entities.Lugar;
+import com.Grupo10OO22021.entities.Permiso;
+import com.Grupo10OO22021.entities.Persona;
 import com.Grupo10OO22021.entities.Rodado;
 
-public class PermisoPeriodoModel {
+public class PermisoPeriodoModel extends PermisoModel {
 
 	private int cantDias;
 	private boolean vacaciones;
-	private Rodado rodado;
+	private RodadoModel rodado;
 
 	public PermisoPeriodoModel() {
 
 	}
 
-	public PermisoPeriodoModel(int cantDias, boolean vacaciones, Rodado rodado) {
+	public PermisoPeriodoModel(int cantDias, boolean vacaciones, RodadoModel rodado) {
 		super();
 		this.cantDias = cantDias;
 		this.vacaciones = vacaciones;
 		this.rodado = rodado;
 	}
+
+	public PermisoPeriodoModel(int idPermiso, PersonaModel persona, LocalDate fecha, Set<Lugar> desdeHasta) {
+		super(idPermiso, persona, fecha, desdeHasta);
+		// TODO Auto-generated constructor stub
+	}
+
+	public PermisoPeriodoModel(int idPermiso, PersonaModel persona, LocalDate fecha, int cantDias, boolean vacaciones,
+			RodadoModel rodado) {
+		super(idPermiso, persona, fecha);
+		this.cantDias = cantDias;
+		this.vacaciones = vacaciones;
+		this.rodado = rodado;
+	}
+
+//	public PermisoPeriodoModel(int idPermiso, Persona persona, LocalDate fecha, int cantDias2, boolean vacaciones2,
+//			RodadoModel entityToModel) {
+//		// TODO Auto-generated constructor stub
+//	}
 
 	public int getCantDias() {
 		return cantDias;
@@ -37,11 +61,11 @@ public class PermisoPeriodoModel {
 		this.vacaciones = vacaciones;
 	}
 
-	public Rodado getRodado() {
+	public RodadoModel getRodado() {
 		return rodado;
 	}
 
-	public void setRodado(Rodado rodado) {
+	public void setRodado(RodadoModel rodado) {
 		this.rodado = rodado;
 	}
 

@@ -18,6 +18,15 @@ public class PerfilModel {
 		this.setIdPerfil(idPerfil);
 		this.nombreRol = nombreRol;
 	}
+	
+	
+
+	public PerfilModel(int idPerfil, String nombreRol, Set<Usuario> usuarios) {
+		super();
+		this.idPerfil = idPerfil;
+		this.nombreRol = nombreRol;
+		this.usuarios = usuarios;
+	}
 
 	public int getIdPerfil() {
 		return idPerfil;
