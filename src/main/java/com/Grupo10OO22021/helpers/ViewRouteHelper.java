@@ -36,7 +36,6 @@ public class ViewRouteHelper {
 
 	// REDIRECT
 	public final static String AUDITOR_ROOT = "/auditor";
-
 	
 	
 }
