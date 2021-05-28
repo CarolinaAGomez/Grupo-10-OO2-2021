@@ -3,12 +3,7 @@ package com.Grupo10OO22021.models;
 import java.time.LocalDate;
 import java.util.Set;
 
-import javax.persistence.Column;
-
 import com.Grupo10OO22021.entities.Lugar;
-import com.Grupo10OO22021.entities.Permiso;
-import com.Grupo10OO22021.entities.Persona;
-import com.Grupo10OO22021.entities.Rodado;
 
 public class PermisoPeriodoModel extends PermisoModel {
 

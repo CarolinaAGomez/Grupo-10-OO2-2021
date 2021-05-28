@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "permiso")
+@Table(name = "Permiso")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Permiso {
 

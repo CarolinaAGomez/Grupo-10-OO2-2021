@@ -17,7 +17,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "Usuario")
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,36 +72,24 @@ public class Usuario {
 		this.password = password;
 		this.perfil  = perfil;
 	}
-
 	public Usuario( String username, String password, Perfil perfil) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.perfil=perfil;
 	}
-
-	
-
 	public long getIdUsuario() {
 		return idUsuario;
 	}
-
-
 	protected void setIdUsuario(long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-
-
 	public String getNombre() {
 		return nombre;
 	}
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 	public String getApellido() {
 		return apellido;
 	}

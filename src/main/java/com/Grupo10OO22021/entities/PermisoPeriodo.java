@@ -12,7 +12,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "permisoPeriodo")
+@Table(name = "PermisoPeriodo")
 @PrimaryKeyJoinColumn(name = "idPermiso")
 public class PermisoPeriodo extends Permiso {
 
