@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.Grupo10OO22021.entities.Lugar;
 import com.Grupo10OO22021.models.LugarModel;
 
-@Component
+@Component("lugarConverter")
 public class LugarConverter {
 	
 	

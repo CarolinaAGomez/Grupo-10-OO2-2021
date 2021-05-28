@@ -3,28 +3,20 @@ package com.Grupo10OO22021.models;
 import java.time.LocalDate;
 import java.util.Set;
 
-import com.Grupo10OO22021.entities.Lugar;
-
 public class PermisoPeriodoModel extends PermisoModel {
 
 	private int cantDias;
 	private boolean vacaciones;
 	private RodadoModel rodado;
 
-	public PermisoPeriodoModel() {
+	public PermisoPeriodoModel() {}
 
-	}
-
-	public PermisoPeriodoModel(int cantDias, boolean vacaciones, RodadoModel rodado) {
-		super();
+	public PermisoPeriodoModel(int idPermiso, PersonaModel persona, LocalDate fecha, Set<LugarModel> desdeHasta,int cantDias, boolean vacaciones,
+	RodadoModel rodado) {
+		super(idPermiso, persona, fecha, desdeHasta);
 		this.cantDias = cantDias;
 		this.vacaciones = vacaciones;
 		this.rodado = rodado;
-	}
-
-	public PermisoPeriodoModel(int idPermiso, PersonaModel persona, LocalDate fecha, Set<Lugar> desdeHasta) {
-		super(idPermiso, persona, fecha, desdeHasta);
-		// TODO Auto-generated constructor stub
 	}
 
 	public PermisoPeriodoModel(int idPermiso, PersonaModel persona, LocalDate fecha, int cantDias, boolean vacaciones,
@@ -34,11 +26,6 @@ public class PermisoPeriodoModel extends PermisoModel {
 		this.vacaciones = vacaciones;
 		this.rodado = rodado;
 	}
-
-//	public PermisoPeriodoModel(int idPermiso, Persona persona, LocalDate fecha, int cantDias2, boolean vacaciones2,
-//			RodadoModel entityToModel) {
-//		// TODO Auto-generated constructor stub
-//	}
 
 	public int getCantDias() {
 		return cantDias;

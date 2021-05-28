@@ -21,10 +21,13 @@ public class Persona {
 
 	@Column(name = "nombre")
 	private String nombre;
+
 	@Column(name = "apellido")
 	private String apellido;
+
 	@Column(name = "dni")
 	private long dni;
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pedido")
 	private Set <Permiso> permiso;
 

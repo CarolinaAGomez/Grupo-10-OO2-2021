@@ -3,13 +3,12 @@ package com.Grupo10OO22021.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.Grupo10OO22021.entities.Usuario;
 
 public class PerfilModel {
 	
 	private int idPerfil;
 	private String nombreRol;
-	private Set<Usuario> usuarios = new HashSet<>();
+	private Set<UsuarioModel> usuarios = new HashSet<>();
 		
 	public PerfilModel() {}
 
@@ -19,9 +18,7 @@ public class PerfilModel {
 		this.nombreRol = nombreRol;
 	}
 	
-	
-
-	public PerfilModel(int idPerfil, String nombreRol, Set<Usuario> usuarios) {
+	public PerfilModel(int idPerfil, String nombreRol, Set<UsuarioModel> usuarios) {
 		super();
 		this.idPerfil = idPerfil;
 		this.nombreRol = nombreRol;
@@ -44,11 +41,12 @@ public class PerfilModel {
 		this.nombreRol = nombreRol;
 	}
 
-	public Set<Usuario> getUsuarios() {
+
+	public Set<UsuarioModel> getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(Set<Usuario> usuarios) {
+	public void setUsuarios(Set<UsuarioModel> usuarios) {
 		this.usuarios = usuarios;
 	}
 

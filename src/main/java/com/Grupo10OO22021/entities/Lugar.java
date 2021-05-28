@@ -34,8 +34,7 @@ public class Lugar {
 			)
 	private Set<Permiso> permiso;
 
-	public Lugar() {
-	}
+	public Lugar() {}
 
 	public Lugar(int idLugar, String lugar, String codigoPostal, Set<Permiso> permiso) {
 		super();

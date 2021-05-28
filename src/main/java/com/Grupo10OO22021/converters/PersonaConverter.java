@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.Grupo10OO22021.entities.Persona;
 import com.Grupo10OO22021.models.PersonaModel;
 
-@Component
+@Component("personaConverter")
 public class PersonaConverter {
 	
 	
