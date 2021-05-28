@@ -9,9 +9,7 @@ public class PermisoPeriodoModel extends PermisoModel {
 	private boolean vacaciones;
 	private RodadoModel rodado;
 
-	public PermisoPeriodoModel() {
-
-	}
+	public PermisoPeriodoModel() {}
 
 	public PermisoPeriodoModel(int idPermiso, PersonaModel persona, LocalDate fecha, Set<LugarModel> desdeHasta,int cantDias, boolean vacaciones,
 	RodadoModel rodado) {
@@ -28,11 +26,6 @@ public class PermisoPeriodoModel extends PermisoModel {
 		this.vacaciones = vacaciones;
 		this.rodado = rodado;
 	}
-
-//	public PermisoPeriodoModel(int idPermiso, Persona persona, LocalDate fecha, int cantDias2, boolean vacaciones2,
-//			RodadoModel entityToModel) {
-//		// TODO Auto-generated constructor stub
-//	}
 
 	public int getCantDias() {
 		return cantDias;

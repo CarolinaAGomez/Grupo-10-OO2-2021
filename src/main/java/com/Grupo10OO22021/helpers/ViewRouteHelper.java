@@ -49,7 +49,10 @@ public class ViewRouteHelper {
 
 	// REDIRECT
 	public final static String AUDITOR_ROOT = "/auditor";
-
 	
+	//RODADO
+	public final static String RODADO_NEW ="/rodado/new";
 	
+	//REDIRECT 
+	public final static String RODADO_ROOT="/rodado";
 }

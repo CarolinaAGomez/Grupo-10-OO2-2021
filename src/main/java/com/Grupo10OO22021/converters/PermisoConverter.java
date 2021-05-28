@@ -23,8 +23,6 @@ public class PermisoConverter {
 	@Qualifier("lugarConverter")
 	private LugarConverter lugarConverter;
 	
-	
-	
 	public PermisoModel entityToModel(Permiso permiso) {
 		Set<LugarModel> desdeHasta = new HashSet<>();
 		for(Lugar l : permiso.getDesdeHasta()){
@@ -52,9 +50,4 @@ public class PermisoConverter {
 				
 				
 	}
-	
-	
-	
-	
-
 }

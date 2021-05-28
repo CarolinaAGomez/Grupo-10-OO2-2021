@@ -18,7 +18,4 @@ public class RodadoConverter {
 		
 		return new Rodado(rodadomodel.getIdRodado(), rodadomodel.getDominio(), rodadomodel.getVehiculo());
 	}
-	
-	
-
 }
