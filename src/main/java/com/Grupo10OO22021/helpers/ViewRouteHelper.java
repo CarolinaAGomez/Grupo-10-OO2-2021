@@ -6,6 +6,11 @@ public class ViewRouteHelper {
 	public static final String LOGIN_ROOT = "/login/";
 	public static final String LOGIN = "/login";
 
+	//HOME
+	public static final String HOME = "home";
+	//REDIRECT
+	public static final String HOME_ROOT = "/";
+
 	// MENUS
 	public final static String MENU_ADMIN = "/menuadmin";
 	public final static String MENU_AUDITOR = "/auditor/menuauditor";
@@ -31,6 +36,14 @@ public class ViewRouteHelper {
     // REDIRECT
 	public final static String USUARIO_ROOT = "/usuario";
     
+	//PERSONA
+	public final static String PERSONA_NEW = "persona/alta";
+
+	// REDIRECT
+	public final static String PERSONA_ROOT = "/persona";
+
+
+
   	//AUDITOR
     public final static String AUDITOR_LISTAR = "auditor/listar";
 
