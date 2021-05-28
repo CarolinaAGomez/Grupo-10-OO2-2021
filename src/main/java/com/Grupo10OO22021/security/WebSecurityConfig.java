@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(resources).permitAll()  //que permita a todo lo que configure arriba
 				.antMatchers("/").permitAll() //a este path puede ingresar cualquiera
 				.antMatchers("/rodado/**").permitAll()
+				.antMatchers("/persona/**").permitAll()
 				.antMatchers("/auditor/**").hasRole("AUDITOR") //anyrole para poder poner mas de un rol
 				.antMatchers("/usuario/**").hasRole("ADMIN") 
 				.antMatchers("/perfil/**").hasRole("ADMIN") 
