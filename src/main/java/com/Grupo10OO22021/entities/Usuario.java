@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -28,7 +29,8 @@ public class Usuario {
 
 	@Column(name = "apellido")
 	private String apellido;
-
+	
+	
 	@Column(name = "dni")
 	private int dni;
 
@@ -36,6 +38,7 @@ public class Usuario {
 	private String mail;
 
 	@Column(name = "username")
+	//@Pattern(regexp = "^[R]{1}\\[O]{1}\\[L]{1}\\[E]{1}//*", message="Debe tener el prefijo role_")
 	private String username; 
 
 	@Column(name = "password")

@@ -10,6 +10,9 @@
     <script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+  
+
 	<div class="contenedor">
         <div class="header">
 			<div class="usuario">
@@ -39,6 +42,9 @@
 			<div class="backButton">
                 <a th:href="@{/admin}"><i class="fas fa-arrow-left"></i></a>
             </div>
+            <small   th:classappend="'alert-' + (${username != null} ? ${username} : info)" th:if="${muser != null}"
+             th:text="${muser}"
+             class="alert"  align-content= "center"></small>
             <div class="optionTable">
 				<a th:href="@{/perfil/new}">Nuevo perfil</a>
                 <a th:href="@{/perfil/(format=pdf)}"  title="Exportar a pdf" target=_blank>Exportar como PDF</a>
@@ -57,9 +63,13 @@
 							<td>
 								<form action="#" th:action ="@{/perfil/update/{id}(id=${perfil.idPerfil})}" method="Get" >
 									<button type="submit"><i class="fas fa-edit"></i></button> 
+									
+									
+									
 								</form>
 								<form action="#" th:action ="@{/perfil/delete/{id}(id=${perfil.idPerfil})}" method="POST" >
 									<button type="submit"><i class="fas fa-trash"></i></button> 
+									
 								</form>
 							</td>
 						</tr>
