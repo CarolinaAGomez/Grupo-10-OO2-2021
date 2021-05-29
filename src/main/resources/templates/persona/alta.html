@@ -11,15 +11,20 @@
 <body>
 	<div class="contenedor">    
 		<div class="backButtonAlta">
-			<a th:href="@{/perfil}"><i class="fas fa-arrow-left"></i></a>
-		</div>
+			<a th:href="@{/}"><i class="fas fa-arrow-left"></i></a>
+		</div>    
 		<div class="form">
-			<form action=# th:action="@{/perfil/create}" th:object="${perfil}" method="POST">
+			<form action=# th:action="@{/persona/insert}" th:object="${persona}" method="POST">
 				<div class="input">
-					<input type="text" th:field="*{nombreRol}" placeholder="Nombre" required="required">
-					
+					<input type="text" th:field="*{nombre}" placeholder="Nombre">
 				</div>
-				<button type="submit">Crear perfil</button>
+                <div class="input">
+					<input type="text" th:field="*{apellido}" placeholder="Apellido">
+				</div>
+                <div class="input">
+					<input type="text" th:field="*{dni}" placeholder="Dni">
+				</div>
+				<button type="submit">Crear persona</button>
 			</form>
 		</div>
 	</div>
