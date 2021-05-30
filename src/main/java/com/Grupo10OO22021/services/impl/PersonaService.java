@@ -1,9 +1,12 @@
 package com.Grupo10OO22021.services.impl;
 
 import com.Grupo10OO22021.converters.PersonaConverter;
+import com.Grupo10OO22021.entities.Persona;
 import com.Grupo10OO22021.models.PersonaModel;
 import com.Grupo10OO22021.repository.IPersonaRepository;
 import com.Grupo10OO22021.services.IPersonaService;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,4 +27,10 @@ public class PersonaService implements IPersonaService{
     public PersonaModel insertOrUpdate(PersonaModel persona){
         return personaConverter.entityToModel(personaRepository.save(personaConverter.modelToEntity(persona)));
     }
+
+	@Override
+	public List<Persona> GetAll() {
+		
+		return personaRepository.findAll();
+	}
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>mostrar</title>
+</head>
+<body>
+
+
+<table border="1px">
+	<thead>
+		<tr>
+			<th>Fecha</th>
+			<th>View</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="permiso : ${permiso}">
+			<td><span th:text="${permiso.fecha}" /></td>
+			<td>
+				<a th:href="@{/person/{id}(id=${person.id})}">View</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+</body>
+</html>

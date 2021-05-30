@@ -42,6 +42,16 @@ public class ViewRouteHelper {
 
 	// REDIRECT
 	public final static String PERSONA_ROOT = "/persona";
+	
+	
+	//PERMISODIARIO
+	public final static String PERMISODIARIO_NEW = "/permisodiario/alta";
+	public final static String PERMISODIARIO_MOSTRAR = "permisodiario/mostrar";
+	 
+	 
+	//PERMISOPERIODO
+	public final static String PERMISOPERIODO_NEW = "/permisoperiodo/alta";
+	
 
 
 
