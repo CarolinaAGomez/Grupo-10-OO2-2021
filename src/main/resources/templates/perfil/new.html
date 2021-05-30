@@ -16,7 +16,8 @@
 		<div class="form">
 			<form action=# th:action="@{/perfil/create}" th:object="${perfil}" method="POST">
 				<div class="input">
-					<input type="text" th:field="*{nombreRol}" placeholder="Nombre">
+					<input type="text" th:field="*{nombreRol}" placeholder="Nombre" required="required">
+					
 				</div>
 				<button type="submit">Crear perfil</button>
 			</form>

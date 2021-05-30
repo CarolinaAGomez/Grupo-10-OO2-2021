@@ -1,5 +1,7 @@
 package com.Grupo10OO22021.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,12 @@ public class RodadoService implements IRodadoService{
 	public RodadoModel inserOrUpdate(RodadoModel rodadoModel) {
 		Rodado rodado = (Rodado) rodadoRepository.save(rodadoConverter.modelToEntity(rodadoModel));
 		return rodadoConverter.entityToModel(rodado);
+	}
+
+	@Override
+	public List<Rodado> getAll() {
+		
+		return rodadoRepository.findAll();
 	}
 
 }

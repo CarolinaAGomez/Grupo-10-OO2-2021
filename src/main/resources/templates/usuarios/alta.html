@@ -9,10 +9,16 @@
     <title>TP OO2 GRUPO 10</title>
 </head>
 <body>
+
+ 
+
+
     <div class="contenedor">    
         <div class="backButtonAlta">
             <a th:href="@{/usuario}"><i class="fas fa-arrow-left"></i></a>
-        </div>    
+        </div>  
+        
+          
         <div class="form">
             <form action="#" th:action="@{/usuario/crear}" th:object="${usuario}" method="POST">
                 <div class="input">
@@ -21,15 +27,26 @@
                 <div class="input">
                     <input type="text" th:field="*{apellido}" placeholder="Apellido" required="required" />
                 </div>
+                
+                <small th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+             th:text="${mensaje}"
+             class="alert"></small>
+     
                 <div class="input">
-                    <input type="text" th:field="*{dni}" placeholder="Dni" required="required" />
+                    <input type="text" th:field="*{dni}" placeholder="Dni" required="required" >  
                 </div>
                 <div class="input">
-                    <input type="email" th:field="*{mail}" placeholder="Correo electrónico" required="required" />
+                    <input type="email" th:field="*{mail}" placeholder="Correo electrónico" required="required"  />
                 </div>
+                
+                <small th:classappend="'alert-' + (${username != null} ? ${username} : info)" th:if="${muser != null}"
+             th:text="${muser}"
+             class="alert"></small>
+                
                 <div class="input">
-                    <input type="text" th:field="*{username}" placeholder="Nombre de usuario" required="required" />
+                    <input type="text" th:field="*{username}" placeholder="Nombre de usuario" required="required" > 
                 </div>
+                
                 <div class="input">
                     <input type="password" th:field="*{password}" placeholder="Contraseña" required="required" />       
                 </div>

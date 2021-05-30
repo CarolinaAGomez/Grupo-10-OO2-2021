@@ -1,8 +1,11 @@
 package com.Grupo10OO22021.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,9 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "Permiso")
@@ -30,10 +36,16 @@ public class Permiso {
 	protected Persona pedido;
 
 	@Column(name = "fecha")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	protected LocalDate fecha;
 
-	@ManyToMany(mappedBy = "permiso")
-	protected Set<Lugar> desdeHasta;
+	//@ManyToMany(mappedBy = "permiso")
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="permiso_lugar", joinColumns=@JoinColumn (name="permiso_id"),
+	inverseJoinColumns= @JoinColumn(name="lugar_id"))
+	
+	private Set<Lugar> desdeHasta=new HashSet<>();
 
 	public Permiso() {
 	}
@@ -86,4 +98,11 @@ public class Permiso {
 	}
 
 
+	
+	public void agregarLugaraPermiso( Lugar l) {
+		desdeHasta.add(l);
+		
+	}
+	
+	
 }

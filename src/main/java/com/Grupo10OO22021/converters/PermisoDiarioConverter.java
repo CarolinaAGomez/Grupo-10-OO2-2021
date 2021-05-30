@@ -2,7 +2,9 @@ package com.Grupo10OO22021.converters;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.origin.SystemEnvironmentOrigin;
 import org.springframework.stereotype.Component;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +13,9 @@ import com.Grupo10OO22021.entities.Lugar;
 import com.Grupo10OO22021.entities.PermisoDiario;
 import com.Grupo10OO22021.models.LugarModel;
 import com.Grupo10OO22021.models.PermisoDiarioModel;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 
 @Component("permisoDiarioConverter")
 public class PermisoDiarioConverter {
@@ -22,7 +27,6 @@ public class PermisoDiarioConverter {
 	@Autowired
 	@Qualifier("lugarConverter")
 	private LugarConverter lugarConverter;
-
 	public PermisoDiarioModel entityToModel(PermisoDiario permisoDiario) {
 		Set<LugarModel> desdeHasta = new HashSet<>();
 		for(Lugar l : permisoDiario.getDesdeHasta()){
@@ -34,6 +38,8 @@ public class PermisoDiarioConverter {
 										desdeHasta,
 										permisoDiario.getMotivo());
 	}
+	
+
 
 	public PermisoDiario modelToEntity (PermisoDiarioModel permisoDiarioModel) {
 		Set<Lugar> desdeHasta = new HashSet<>();
