@@ -31,6 +31,7 @@ public class ViewRouteHelper {
 	//USUARIO
     public final static String USUARIO_LISTAR = "usuarios/listar";
     public final static String USUARIO_ALTA = "usuarios/alta";
+    public final static String USUARIO_PRUEBA = "alta";
     public final static String USUARIO_MODIFICAR = "usuarios/modificar";
 
     // REDIRECT
@@ -41,6 +42,16 @@ public class ViewRouteHelper {
 
 	// REDIRECT
 	public final static String PERSONA_ROOT = "/persona";
+	
+	
+	//PERMISODIARIO
+	public final static String PERMISODIARIO_NEW = "/permisodiario/alta";
+	public final static String PERMISODIARIO_MOSTRAR = "permisodiario/mostrar";
+	 
+	 
+	//PERMISOPERIODO
+	public final static String PERMISOPERIODO_NEW = "/permisoperiodo/alta";
+	
 
 
 

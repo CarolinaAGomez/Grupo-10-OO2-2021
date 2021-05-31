@@ -1,14 +1,20 @@
 package com.Grupo10OO22021.models;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.Grupo10OO22021.entities.Lugar;
 
 public class PermisoModel {
 
 	private int idPermiso;
 	private PersonaModel pedido;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
-	private Set<LugarModel> desdeHasta;
+	private Set<LugarModel> desdeHasta; //sacar
 
 	public PermisoModel() {}
 
@@ -56,4 +62,38 @@ public class PermisoModel {
 		return "PermisoModel [idPermiso=" + idPermiso + ", pedido=" + pedido + ", fecha=" + fecha + ", desdeHasta="
 				+ desdeHasta + "]";
 	}
+	
+	
+	
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idPermiso;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PermisoModel other = (PermisoModel) obj;
+		if (idPermiso != other.idPermiso)
+			return false;
+		return true;
+	}
+
+	/*public void agregarLugaraPermiso(LugarModel l) {
+		  desdeHasta.add(l);
+		
+	}*/
+	
+	
+	
 }
