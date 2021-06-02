@@ -40,9 +40,11 @@ public class Permiso {
 	//@ManyToMany(mappedBy = "permiso")
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="permiso_lugar", joinColumns=@JoinColumn (name="permiso_id"),
-	inverseJoinColumns= @JoinColumn(name="lugar_id"))
-	
+	@JoinTable(
+		name="permiso_lugar", 
+		joinColumns=@JoinColumn (name="permiso_id"),
+		inverseJoinColumns= @JoinColumn(name="lugar_id")
+		)
 	private Set<Lugar> desdeHasta=new HashSet<>();
 
 	public Permiso() {

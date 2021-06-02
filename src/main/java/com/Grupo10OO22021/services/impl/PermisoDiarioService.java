@@ -15,6 +15,7 @@ public class PermisoDiarioService implements IPermisoDiarioService {
 	@Qualifier("permisoDiarioConverter")
 	private PermisoDiarioConverter permisoDiarioConverter;
 
+
 	@Autowired
 	@Qualifier("permisoDiarioRepository")
 	private IPermisoDiarioRepository permisoDiarioRepository;

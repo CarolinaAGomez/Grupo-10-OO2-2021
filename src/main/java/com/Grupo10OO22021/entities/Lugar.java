@@ -22,19 +22,6 @@ public class Lugar {
 	private String lugar;
 	@Column(name = "codigoPostal")
 	private String codigoPostal;
-	/*
-	 * @ManyToMany(cascade = CascadeType.MERGE)
-	 * 
-	 * @JoinTable( name = "permiso_lugar", joinColumns = {@JoinColumn(name =
-	 * "lugar_id")}, inverseJoinColumns = {@JoinColumn(name = "persona_id")} )
-	 */
-	// private Set<Permiso> permiso;
-
-	@ManyToMany(mappedBy = "desdeHasta") // Mapeado con el campo Roles de Usuario
-	private Set<Permiso> permiso;
-
-	public Lugar() {
-	}
 
 	/*
 	 * public Lugar(int idLugar, String lugar, String codigoPostal, Set<Permiso>
@@ -43,6 +30,20 @@ public class Lugar {
 	 * 
 	 * 
 	 */
+	/*
+	 * @ManyToMany(cascade = CascadeType.MERGE)
+	 * 
+	 * @JoinTable( name = "permiso_lugar", joinColumns = {@JoinColumn(name =
+	 * "lugar_id")}, inverseJoinColumns = {@JoinColumn(name = "persona_id")} )
+	 */
+	// private Set<Permiso> permiso;
+
+	@ManyToMany(mappedBy = "desdeHasta")
+	private Set<Permiso> permiso;
+
+	public Lugar() {
+	}
+
 	public Lugar(int idLugar, String lugar, String codigoPostal) {
 		super();
 		this.idLugar = idLugar;

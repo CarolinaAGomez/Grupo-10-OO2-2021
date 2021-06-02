@@ -32,15 +32,6 @@ public class PermisoDiarioModel extends PermisoModel{
 		this.motivo = motivo;
 	}
 
-	@Override
-	public String toString() {
-		return "PermisoDiario [motivo=" + motivo + "]";
-	}
-
-	
-	
-	
-	
 
 	
 	@Override
@@ -49,9 +40,7 @@ public class PermisoDiarioModel extends PermisoModel{
 		int result = super.hashCode();
 		result = prime * result + ((motivo == null) ? 0 : motivo.hashCode());
 		return result;
-	}
-
-	
+	}	
 
 	@Override
 	public boolean equals(Object obj) {

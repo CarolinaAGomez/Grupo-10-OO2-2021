@@ -5,17 +5,20 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../static/css/form.css" th:href="@{/css/form.css}" rel="stylesheet">
-<script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
+<link href="../static/css/form.css" th:href="@{/css/form.css}"
+	rel="stylesheet">
+<script src="https://kit.fontawesome.com/d25b889486.js"
+	crossorigin="anonymous"></script>
 <title>TP OO2 GRUPO 10</title>
 
-	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../static/css/form.css" th:href="@{/css/form.css}"  rel="stylesheet">
-    <script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
-    <title>TP OO2 GRUPO 10</title>
-
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../static/css/form.css" th:href="@{/css/form.css}"
+	rel="stylesheet">
+<script src="https://kit.fontawesome.com/d25b889486.js"
+	crossorigin="anonymous"></script>
+<title>TP OO2 GRUPO 10</title>
 <body>
 	<div class="contenedor">
 		<div class="backButtonAlta">
@@ -43,38 +46,41 @@
 				</select> <select th:field="${permiso.desdeHasta}">
 					<option th:each="lugar : ${lugares}" th:text="${lugar.lugar}"
 						th:value="${lugar.idLugar}"></option>
-				</select>
-				<select th:field="${permiso.desdeHasta}">
+				</select> <select th:field="${permiso.desdeHasta}">
 					<option th:each="lugar : ${lugares}" th:text="${lugar.lugar}"
 						th:value="${lugar.idLugar}"></option>
 				</select>
 
 
-			<form action="#" th:action="@{/permisodiario/create}" th:object="${permiso}" method="POST">
-				<div class="input">
-				
-					<input type="hidden" th:field="*{idPermiso}" readonly> 
-				
-					<input type="date" th:field="*{fecha}" placeholder="Fecha"> 
-				</div>
-				
-				<div class="input">
-					<input type="text" th:field="*{motivo}" placeholder="Motivo de permiso diario"> 
-				</div>
-				
-				  
-				
-				
-				<select th:field="${permiso.pedido.idPersona}">
-                    <option th:each="pedido : ${personas}" th:text="${pedido.dni}" th:value="${pedido.idPersona}"></option>
-                </select>
-                
-                <select th:field="${permiso.desdeHasta}" >
-                    <option th:each="lugar : ${lugares}" th:text="${lugar.lugar}" th:value="${lugar.idLugar}"></option>
-                </select>
-                
-				<button type="submit">Crear Permiso</button>
-			</form>
+				<form action="#" th:action="@{/permisodiario/create}"
+					th:object="${permiso}" method="POST">
+					<div class="input">¿Qué dia solicita el permiso?</div>
+					<div class="input">
+						<input type="hidden" th:field="*{idPermiso}" readonly> <input
+							type="date" th:field="*{fecha}" placeholder="Fecha">
+					</div>
+					<div class="input">Motivo por el cual solicita el permiso</div>
+					<div class="input">
+						<input type="text" th:field="*{motivo}" placeholder="Motivo">
+					</div>
+					<div class="input">Persona que solicita el permiso</div>
+					<select th:field="${permiso.pedido.idPersona}">
+						<option th:each="pedido : ${personas}"
+							th:text="${pedido.nombre} + ${pedido.apellido}"
+							th:value="${pedido.idPersona}"></option>
+					</select>
+					<div class="input">Desde</div>
+					<select name="desde">
+						<option th:each="lugar : ${lugares}" th:text="${lugar.lugar}"
+							th:value="${lugar.idLugar}"></option>
+					</select>
+					<div class="input">Hasta</div>
+					<select name="hasta">
+						<option th:each="lugar : ${lugares}" th:text="${lugar.lugar}"
+							th:value="${lugar.idLugar}"></option>
+					</select>
+					<button type="submit">Crear Permiso</button>
+				</form>
 		</div>
 	</div>
 </body>
