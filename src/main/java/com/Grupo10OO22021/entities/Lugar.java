@@ -36,22 +36,12 @@ public class Lugar {
 			)*/
 	//private Set<Permiso> permiso;
 	
-	 @ManyToMany(mappedBy = "desdeHasta") //Mapeado con el campo Roles de Usuario
-	    private Set<Permiso> permiso;
+	@ManyToMany(mappedBy = "desdeHasta") 
+	private Set<Permiso> permiso;
 	
 
 	public Lugar() {}
-/*
-	public Lugar(int idLugar, String lugar, String codigoPostal, Set<Permiso> permiso) {
-		super();
-		this.idLugar = idLugar;
-		this.lugar = lugar;
-		this.codigoPostal = codigoPostal;
-		this.permiso = permiso;
-	}
-	
-	
-*/
+
 	public Lugar(int idLugar, String lugar, String codigoPostal) {
 		super();
 		this.idLugar = idLugar;

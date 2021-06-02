@@ -9,9 +9,9 @@ import com.Grupo10OO22021.entities.Lugar;
 
 
 @Repository("lugarRepository")
-public interface ILugarRepository extends JpaRepository <Lugar, Integer> {
+public interface ILugarRepository extends JpaRepository <Lugar, Serializable> {
 	
-	public Lugar findByIdLugar(int id);
+	public Lugar findByIdLugar(int idLugar);
 	
 
 }

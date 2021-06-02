@@ -15,6 +15,7 @@ import com.Grupo10OO22021.services.IPermisoDiarioService;
 public class PermisoDiarioService implements IPermisoDiarioService {
 	
 	@Autowired
+	@Qualifier("permisoDiarioConverter")
     private PermisoDiarioConverter permisoDiarioConverter;
 	
 	

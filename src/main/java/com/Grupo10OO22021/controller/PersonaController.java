@@ -1,11 +1,9 @@
 package com.Grupo10OO22021.controller;
 
-import java.lang.ProcessBuilder.Redirect;
 
 import com.Grupo10OO22021.helpers.ViewRouteHelper;
 import com.Grupo10OO22021.models.PersonaModel;
 import com.Grupo10OO22021.services.IPersonaService;
-import com.Grupo10OO22021.services.impl.PersonaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
