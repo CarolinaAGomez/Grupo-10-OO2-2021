@@ -2,6 +2,8 @@ package com.Grupo10OO22021.models;
 
 import java.util.Set;
 
+import com.Grupo10OO22021.entities.Permiso;
+
 public class LugarModel {
 
 	private int idLugar;
@@ -61,5 +63,34 @@ public class LugarModel {
 	}
 
 	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idLugar;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LugarModel other = (LugarModel) obj;
+		if (idLugar != other.idLugar)
+			return false;
+		return true;
+	}
+/*
+	public void agregarPermisoaLugar( PermisoModel p) {
+		permiso.add(p);
+		
+	}
+	*/
 
 }
