@@ -2,7 +2,6 @@ package com.Grupo10OO22021.models;
 
 import java.util.Set;
 
-import com.Grupo10OO22021.entities.Permiso;
 
 public class LugarModel {
 

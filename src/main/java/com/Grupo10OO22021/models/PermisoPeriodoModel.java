@@ -53,7 +53,7 @@ public class PermisoPeriodoModel extends PermisoModel {
 
 	@Override
 	public String toString() {
-		return "PermisoPeriodo [cantDias=" + cantDias + ", vacaciones=" + vacaciones + ", rodado=" + rodado + "]";
+		return "PermisoPeriodo"+super.toString()+"[cantDias=" + cantDias + ", vacaciones=" + vacaciones + ", rodado=" + rodado + "]";
 	}
 
 }

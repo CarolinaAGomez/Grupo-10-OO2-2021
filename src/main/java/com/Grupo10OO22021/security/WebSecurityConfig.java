@@ -45,7 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/").permitAll() //a este path puede ingresar cualquiera
 				.antMatchers("/rodado/**").permitAll()
 				.antMatchers("/permisodiario/**").permitAll()
-				.antMatchers("/permiso/**").permitAll()
+				.antMatchers("/permiso").permitAll()
+				.antMatchers("/permiso/traerPorPersona").not().hasAuthority("ROLE_ADMIN")
+				.antMatchers("/permiso/traerPorRodado/**").hasRole("AUDITOR")
+				.antMatchers("/permiso/traerActivos/**").hasRole("AUDITOR")
 				//EL USUARIO ADMIN NO PUEDE DAR EL ALTA, ACA CAMBIAR LUEGO PARA EL TRAER Y COLOCARLO ASI.
 				.antMatchers("/permisoperiodo/**").not().hasAuthority("ROLE_ADMIN")
 				.antMatchers("/persona/**").permitAll()
