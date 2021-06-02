@@ -1,13 +1,9 @@
 package com.Grupo10OO22021.controller;
 
-import com.Grupo10OO22021.entities.Perfil;
-import com.Grupo10OO22021.entities.Usuario;
 import com.Grupo10OO22021.helpers.ViewRouteHelper;
-import com.Grupo10OO22021.models.RodadoModel;
 import com.Grupo10OO22021.models.UsuarioModel;
 import com.Grupo10OO22021.services.IPerfilService;
 import com.Grupo10OO22021.services.IUsuarioService;
-import com.Grupo10OO22021.services.impl.RodadoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +13,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,9 +36,6 @@ public class UsuarioController {
     @Qualifier("perfilService")
     private IPerfilService perfilService;
     
-    
-    @Autowired
-    private RodadoService rodadoService;
 
     @PreAuthorize("hasRol('ROLE_ADMIN')")
     @GetMapping("")

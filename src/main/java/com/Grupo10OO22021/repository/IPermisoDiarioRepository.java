@@ -5,12 +5,11 @@ import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.Grupo10OO22021.entities.Permiso;
 import com.Grupo10OO22021.entities.PermisoDiario;
 
 
 @Repository("permisoDiarioRepository")
-public interface IPermisoDiarioRepository extends JpaRepository<PermisoDiario, Integer> {
+public interface IPermisoDiarioRepository extends JpaRepository<PermisoDiario, Serializable> {
 	
 	public PermisoDiario findByPedido(int idPersona);
 

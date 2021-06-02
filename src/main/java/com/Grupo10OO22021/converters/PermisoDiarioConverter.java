@@ -2,7 +2,6 @@ package com.Grupo10OO22021.converters;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.origin.SystemEnvironmentOrigin;
 import org.springframework.stereotype.Component;
 
 
@@ -14,7 +13,6 @@ import com.Grupo10OO22021.entities.PermisoDiario;
 import com.Grupo10OO22021.models.LugarModel;
 import com.Grupo10OO22021.models.PermisoDiarioModel;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 
 @Component("permisoDiarioConverter")

@@ -5,7 +5,14 @@ package com.Grupo10OO22021.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
+
 import com.Grupo10OO22021.converters.PermisoDiarioConverter;
+import com.Grupo10OO22021.entities.PermisoDiario;
 import com.Grupo10OO22021.models.PermisoDiarioModel;
 import com.Grupo10OO22021.repository.IPermisoDiarioRepository;
 import com.Grupo10OO22021.services.IPermisoDiarioService;
@@ -30,6 +37,19 @@ public class PermisoDiarioService implements IPermisoDiarioService {
 	return permisoDiarioConverter.entityToModel(permisoDiarioRepository.save(permisoDiarioConverter.modelToEntity(permiso)));
 	}
 	
+	@Override
+	public Set<PermisoDiarioModel> buscarActivosEntreFechas(String fechaInicial, String fechaFinal){
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate primeraFecha =  LocalDate.parse(fechaInicial, formatter);
+		LocalDate segundaFecha = LocalDate.parse(fechaFinal, formatter);
+		Set<PermisoDiarioModel> permisosActivos = new HashSet<>();
+		for(PermisoDiario pd : permisoDiarioRepository.findAll()){
+			if(pd.getFecha().equals(primeraFecha) || pd.getFecha().isAfter(primeraFecha) && pd.getFecha().isBefore(segundaFecha) || pd.getFecha().equals(segundaFecha)){
+				permisosActivos.add(permisoDiarioConverter.entityToModel(pd));
+			}
+		}
+		return permisosActivos;
+	}
 	/*
 	public void agregarLugaraPermiso(Permiso permiso) {
 		System.out.println("entro a permisoooooo diarioooo");
