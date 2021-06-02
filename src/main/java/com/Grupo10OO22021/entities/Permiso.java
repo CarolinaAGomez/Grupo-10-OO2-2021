@@ -1,11 +1,9 @@
 package com.Grupo10OO22021.entities;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,11 +40,9 @@ public class Permiso {
 	//@ManyToMany(mappedBy = "permiso")
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name="permiso_lugar", 
-			joinColumns= @JoinColumn (name="permiso_id",nullable=false),
-			inverseJoinColumns= @JoinColumn(name="lugar_id",nullable=false)
-	)
+	@JoinTable(name="permiso_lugar", joinColumns=@JoinColumn (name="permiso_id"),
+	inverseJoinColumns= @JoinColumn(name="lugar_id"))
+	
 	private Set<Lugar> desdeHasta=new HashSet<>();
 
 	public Permiso() {
@@ -98,7 +94,7 @@ public class Permiso {
 	public void setDesdeHasta(Set<Lugar> desdeHasta) {
 		this.desdeHasta = desdeHasta;
 	}
-	
+
 	public void agregarLugaraPermiso( Lugar l) {
 		desdeHasta.add(l);	
 	}

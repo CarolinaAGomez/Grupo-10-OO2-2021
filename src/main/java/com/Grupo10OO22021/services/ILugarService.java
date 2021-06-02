@@ -1,11 +1,13 @@
 package com.Grupo10OO22021.services;
 
-import java.util.List;
+import java.util.Set;
 
-import com.Grupo10OO22021.entities.Lugar;
+import com.Grupo10OO22021.models.LugarModel;
 
 public interface ILugarService {
-	
-	public List<Lugar> getAll();
+
+	public Set<LugarModel> getAll();
+
+	public LugarModel findByIdLugar(int id);
 
 }

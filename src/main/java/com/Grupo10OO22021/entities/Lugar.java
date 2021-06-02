@@ -2,14 +2,11 @@ package com.Grupo10OO22021.entities;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -36,8 +33,16 @@ public class Lugar {
 	@ManyToMany(mappedBy = "desdeHasta") // Mapeado con el campo Roles de Usuario
 	private Set<Permiso> permiso;
 
-	public Lugar() {}
+	public Lugar() {
+	}
 
+	/*
+	 * public Lugar(int idLugar, String lugar, String codigoPostal, Set<Permiso>
+	 * permiso) { super(); this.idLugar = idLugar; this.lugar = lugar;
+	 * this.codigoPostal = codigoPostal; this.permiso = permiso; }
+	 * 
+	 * 
+	 */
 	public Lugar(int idLugar, String lugar, String codigoPostal) {
 		super();
 		this.idLugar = idLugar;
@@ -77,10 +82,6 @@ public class Lugar {
 		this.permiso = permiso;
 	}
 
-	public boolean add(Permiso permiso) {
-		return this.permiso.add(permiso);
-	}
-	
 	@Override
 	public String toString() {
 		return "Lugar [idLugar=" + idLugar + ", lugar=" + lugar + ", codigoPostal=" + codigoPostal + ", permiso=" + "]";
@@ -107,13 +108,14 @@ public class Lugar {
 			return false;
 		return true;
 	}
-}
-/*
- * 
- * public void agregarPermisoaLugar( Permiso p) { permiso.add(p);
- * 
- * }
- * 
- * 
- */
 
+	/*
+	 * 
+	 * public void agregarPermisoaLugar( Permiso p) { permiso.add(p);
+	 * 
+	 * }
+	 * 
+	 * 
+	 */
+
+}
