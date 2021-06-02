@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "Lugar")
 public class Lugar {
@@ -23,20 +22,27 @@ public class Lugar {
 	private String lugar;
 	@Column(name = "codigoPostal")
 	private String codigoPostal;
-/*	
-	@ManyToMany(cascade = CascadeType.MERGE)
-	@JoinTable(
-			name = "permiso_lugar",
-			joinColumns = {@JoinColumn(name = "lugar_id")},
-			inverseJoinColumns = {@JoinColumn(name = "persona_id")}
-			)*/
-	//private Set<Permiso> permiso;
-	
-	@ManyToMany(mappedBy = "desdeHasta") 
-	private Set<Permiso> permiso;
-	
 
-	public Lugar() {}
+	/*
+	 * public Lugar(int idLugar, String lugar, String codigoPostal, Set<Permiso>
+	 * permiso) { super(); this.idLugar = idLugar; this.lugar = lugar;
+	 * this.codigoPostal = codigoPostal; this.permiso = permiso; }
+	 * 
+	 * 
+	 */
+	/*
+	 * @ManyToMany(cascade = CascadeType.MERGE)
+	 * 
+	 * @JoinTable( name = "permiso_lugar", joinColumns = {@JoinColumn(name =
+	 * "lugar_id")}, inverseJoinColumns = {@JoinColumn(name = "persona_id")} )
+	 */
+	// private Set<Permiso> permiso;
+
+	@ManyToMany(mappedBy = "desdeHasta")
+	private Set<Permiso> permiso;
+
+	public Lugar() {
+	}
 
 	public Lugar(int idLugar, String lugar, String codigoPostal) {
 		super();
@@ -79,8 +85,7 @@ public class Lugar {
 
 	@Override
 	public String toString() {
-		return "Lugar [idLugar=" + idLugar + ", lugar=" + lugar + ", codigoPostal=" + codigoPostal + ", permiso="
-				 + "]";
+		return "Lugar [idLugar=" + idLugar + ", lugar=" + lugar + ", codigoPostal=" + codigoPostal + ", permiso=" + "]";
 	}
 
 	@Override
@@ -104,17 +109,14 @@ public class Lugar {
 			return false;
 		return true;
 	}
-	
+
 	/*
-	
-	public void agregarPermisoaLugar( Permiso p) {
-		permiso.add(p);
-		
-	}
-	
-	
-	*/
-	
-	
+	 * 
+	 * public void agregarPermisoaLugar( Permiso p) { permiso.add(p);
+	 * 
+	 * }
+	 * 
+	 * 
+	 */
 
 }

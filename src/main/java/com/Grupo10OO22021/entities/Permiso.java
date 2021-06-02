@@ -97,12 +97,7 @@ public class Permiso {
 		this.desdeHasta = desdeHasta;
 	}
 
-
-	
 	public void agregarLugaraPermiso( Lugar l) {
-		desdeHasta.add(l);
-		
+		desdeHasta.add(l);	
 	}
-	
-	
 }

@@ -12,7 +12,7 @@ import com.Grupo10OO22021.entities.Permiso;
 import com.Grupo10OO22021.models.LugarModel;
 import com.Grupo10OO22021.models.PermisoModel;
 
-@Component("permisoConveter")
+@Component("permisoConverter")
 public class PermisoConverter {
 	
 	@Autowired

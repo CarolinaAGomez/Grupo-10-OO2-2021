@@ -1,5 +1,9 @@
 package com.Grupo10OO22021.services.impl;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -11,28 +15,34 @@ import java.util.Set;
 
 
 import com.Grupo10OO22021.converters.PermisoPeriodoConverter;
+
 import com.Grupo10OO22021.entities.PermisoPeriodo;
 import com.Grupo10OO22021.models.PermisoPeriodoModel;
 import com.Grupo10OO22021.repository.IPermisoPeriodoRepository;
 import com.Grupo10OO22021.services.IPermisoPeriodoService;
 
-
 @Service("permisoPeriodoService")
 public class PermisoPeriodoService implements IPermisoPeriodoService {
 	
 	@Autowired
-    private PermisoPeriodoConverter permisoPeriodoConverter;
-	
+	private PermisoPeriodoConverter permisoPeriodoConverter;
 	
 	@Autowired
 	@Qualifier("permisoPeriodoRepository")
 	private IPermisoPeriodoRepository permisoPeriodoRepository;
 	
-	
-
 	@Override
 	public PermisoPeriodoModel insertOrUpdate(PermisoPeriodoModel permiso) {
 		 return permisoPeriodoConverter.entityToModel(permisoPeriodoRepository.save(permisoPeriodoConverter.modelToEntity(permiso)));
+	}
+
+	@Override
+	public Set<PermisoPeriodoModel> findByPedido(int idPersona) {
+		Set<PermisoPeriodoModel> aux = new HashSet<>();
+		for (PermisoPeriodo p : permisoPeriodoRepository.findByPedido(idPersona)) {
+			aux.add(permisoPeriodoConverter.entityToModel(p));
+		}
+		return aux;
 	}
 
 	@Override
@@ -65,5 +75,4 @@ public class PermisoPeriodoService implements IPermisoPeriodoService {
 		}
 		return permisosActivos;
 	}
-
 }
