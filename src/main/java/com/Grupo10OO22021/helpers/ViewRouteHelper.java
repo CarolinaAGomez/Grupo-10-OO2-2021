@@ -48,6 +48,9 @@ public class ViewRouteHelper {
 	public final static String PERMISO_TRAER = "permiso/traer";
 	public final static String PERMISO_TRAER_POR_PERSONA = "permiso/traerPorPersona";
 	public final static String PERMISO_VISTA_TRAER_POR_PERSONA ="permiso/mostrarTraerPorPersona";
+	public final static String PERMISO_TRAER_POR_RODADO = "permiso/traerPorRodado";
+	public final static String PERMISO_TRAER_ACTIVOS = "permiso/traerActivos";
+
 	//REDIRECT
 	public final static String PERMISO_ROOT = "/permiso";
 
