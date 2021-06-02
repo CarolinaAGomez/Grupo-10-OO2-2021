@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "perfil")
+@Table(name = "Perfil")
 public class Perfil {
 	
 	@Id
@@ -22,8 +22,8 @@ public class Perfil {
 	@Column(name = "nombreRol")
 	private String nombreRol;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="perfil")  //1 ROL TIENE MUCHOS USUARIOS  . perfil ES DE LA LISTA DE USUARIOS
-	private Set<Usuario> usuarios;// =new HashSet<Usuario>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="perfil")
+	private Set<Usuario> usuarios;
 	
 	public Perfil() {}
 

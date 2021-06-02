@@ -6,6 +6,11 @@ public class ViewRouteHelper {
 	public static final String LOGIN_ROOT = "/login/";
 	public static final String LOGIN = "/login";
 
+	//HOME
+	public static final String HOME = "home";
+	//REDIRECT
+	public static final String HOME_ROOT = "/";
+
 	// MENUS
 	public final static String MENU_ADMIN = "/menuadmin";
 	public final static String MENU_AUDITOR = "/auditor/menuauditor";
@@ -26,17 +31,42 @@ public class ViewRouteHelper {
 	//USUARIO
     public final static String USUARIO_LISTAR = "usuarios/listar";
     public final static String USUARIO_ALTA = "usuarios/alta";
+    public final static String USUARIO_PRUEBA = "alta";
     public final static String USUARIO_MODIFICAR = "usuarios/modificar";
 
     // REDIRECT
 	public final static String USUARIO_ROOT = "/usuario";
     
+	//PERSONA
+	public final static String PERSONA_NEW = "persona/alta";
+
+	// REDIRECT
+	public final static String PERSONA_ROOT = "/persona";
+	
+	
+	//PERMISO
+	public final static String PERMISO_TRAER = "permiso/traer";
+	public final static String PERMISO_TRAER_POR_PERSONA = "permiso/traerPorPersona";
+	//REDIRECT
+	public final static String PERMISO_ROOT = "/permiso";
+
+	//PERMISODIARIO
+	public final static String PERMISODIARIO_NEW = "/permisodiario/alta";
+	public final static String PERMISODIARIO_MOSTRAR = "permisodiario/mostrar";
+	 
+	//PERMISOPERIODO
+	public final static String PERMISOPERIODO_NEW = "/permisoperiodo/alta";
+	
+
   	//AUDITOR
     public final static String AUDITOR_LISTAR = "auditor/listar";
 
 	// REDIRECT
 	public final static String AUDITOR_ROOT = "/auditor";
-
 	
+	//RODADO
+	public final static String RODADO_NEW ="/rodado/new";
 	
+	//REDIRECT 
+	public final static String RODADO_ROOT="/rodado";
 }
