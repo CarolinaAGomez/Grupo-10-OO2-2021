@@ -14,35 +14,35 @@
 		</div>
 		<div class="form">
 			<form action="#" th:action="@{/permisoperiodo/create}" th:object="${permiso}" method="POST">
+				<div class="input">¿Qué dia solicita el permiso?</div>
 				<div class="input">
-				
 					<input type="hidden" th:field="*{idPermiso}" readonly> 
-				
 					<input type="date" th:field="*{fecha}" placeholder="Fecha"> 
 				</div>
-				
 				<div class="input">
-					<input type="number" th:field="*{cantDias}" placeholder="Cantidad de dias"> 
+					<input type="number" th:field="*{cantDias}" placeholder="¿Durante cuantos dias solicita el permiso?"> 
 				</div>
-				
-				<!-- <div class="input">
-					<input type="text" th:field="*{vacaciones}" placeholder="Cantidad de dias"> 
-				-->
-				
+				<div class="input">¿Es por vacaciones?</div>
 				<div class="input">
-				<input  type="radio" th:field="*{vacaciones}" value="true" >true
-                <input  type="radio" th:field="*{vacaciones}" value="false" checked >false
+					<input  type="radio" th:field="*{vacaciones}" value="true" >Si
+                	<input  type="radio" th:field="*{vacaciones}" value="false" checked >No
 				</div> 
-				
+				<div class="input">Persona que solicita el permiso</div>			
 				<select th:field="${permiso.pedido.idPersona}">
-                    <option th:each="pedido : ${personas}" th:text="${pedido.dni}" th:value="${pedido.idPersona}"></option>
+                    <option th:each="pedido : ${personas}" th:text="${pedido.nombre} + ${pedido.apellido}" th:value="${pedido.idPersona}"></option>
                 </select>
-                
+				<div class="input">Vehiculo</div>
                 <select th:field="${permiso.rodado.idRodado}" >
-                    <option th:each="rodado : ${rodados}" th:text="${rodado.vehiculo}" th:value="${rodado.idRodado}"></option>
+                    <option th:each="rodado : ${rodados}" th:text="${rodado.dominio} + ${rodado.vehiculo} " th:value="${rodado.idRodado}"></option>
                 </select>
-                
-				
+                <div class="input">Desde</div>
+                <select name="desde">
+                    <option th:each="lugar : ${lugares}" th:text="${lugar.lugar}" th:value="${lugar.idLugar}"></option>
+                </select>
+				<div class="input">Hasta</div>
+				<select name="hasta" >
+                    <option th:each="lugar : ${lugares}" th:text="${lugar.lugar}" th:value="${lugar.idLugar}"></option>
+                </select>
 				<button type="submit">Crear Permiso</button>
 			</form>
 		</div>

@@ -3,20 +3,25 @@ package com.Grupo10OO22021.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import com.Grupo10OO22021.entities.PermisoDiario;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import com.Grupo10OO22021.helpers.ViewRouteHelper;
+import com.Grupo10OO22021.models.LugarModel;
 import com.Grupo10OO22021.models.PermisoDiarioModel;
-import com.Grupo10OO22021.repository.IPermisoDiarioRepository;
-import com.Grupo10OO22021.services.impl.LugarService;
-import com.Grupo10OO22021.services.impl.PermisoService;
-import com.Grupo10OO22021.services.impl.PersonaService;
+import com.Grupo10OO22021.services.ILugarService;
+import com.Grupo10OO22021.services.IPermisoDiarioService;
+import com.Grupo10OO22021.services.IPersonaService;
 
 @Controller
 @RequestMapping("/permisodiario")
@@ -24,19 +29,16 @@ public class PermisoDiarioController {
 	
 	
 	@Autowired
-	private PermisoService permisoService;
+	@Qualifier("permisoDiarioService")
+	private IPermisoDiarioService permisoDiarioService;
 	
 	@Autowired
-	private PersonaService personaService;
-	
-
-	
-	@Autowired
-	private IPermisoDiarioRepository permisodRepository;
-
+	@Qualifier("personaService")
+	private IPersonaService personaService;
 	
 	@Autowired
-	private LugarService lugarService;
+	@Qualifier("lugarService")
+	private ILugarService lugarService;
 	
 
 	
@@ -45,28 +47,36 @@ public class PermisoDiarioController {
         ModelAndView mV = new ModelAndView(ViewRouteHelper.PERMISODIARIO_NEW);
 		//mV.addObject("permiso", new PermisoModel());SI PONGO ESTE NO TRAE MOTIVO
 		mV.addObject("permiso", new PermisoDiarioModel());
+		mV.addObject("desde", new LugarModel()); 
+		mV.addObject("hasta", new LugarModel()); 
 		mV.addObject("personas", personaService.GetAll());
 		mV.addObject("lugares",lugarService.getAll()); //sin esto no trae
 		return mV;
     }
 
     @PostMapping("/create")
-    public RedirectView create(/*@ModelAttribute("permisoModel") PARA QUE ES ESTO? */PermisoDiario permisoModel) {
-    
-    	permisodRepository.save(permisoModel);
-    	//permisoService.insertOrUpdate(permisoModel); CON SERVICE NO ME ANDA. Sera el converter?
+    public RedirectView create(@ModelAttribute("permiso") PermisoDiarioModel permiso,
+							   @RequestParam(required = true) int desde,
+							   @RequestParam(required = true) int hasta) {
+		Set<LugarModel> lugares = new HashSet<>();
+		LugarModel desdeLugar = lugarService.findByIdLugar(desde);
+		LugarModel hastaLugar = lugarService.findByIdLugar(hasta);
+		lugares.add(desdeLugar);
+		lugares.add(hastaLugar);
+		permiso.setDesdeHasta(lugares);
+    	permisoDiarioService.insertOrUpdate(permiso);
         return new RedirectView(ViewRouteHelper.HOME_ROOT);
     }
     
  
    
 
-    @GetMapping("/{id}")
+/*    @GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PERMISODIARIO_MOSTRAR);
-		mAV.addObject("person", permisoService.traerPermisoxPersona(id));
+		mAV.addObject("person", permisoDiarioService.traerPermisoxPersona(id));
 		return mAV;
-	}
+	}*/
     
    
    
