@@ -1,6 +1,7 @@
 package com.Grupo10OO22021.services;
 
 import java.util.List;
+import java.util.Set;
 
 import com.Grupo10OO22021.models.PermisoPeriodoModel;
 
@@ -10,4 +11,5 @@ public interface IPermisoPeriodoService {
 
 	public List<PermisoPeriodoModel> findByIdRodado(int idRodado);
 
+	public Set<PermisoPeriodoModel> findByPedido(int idPersona);
 }

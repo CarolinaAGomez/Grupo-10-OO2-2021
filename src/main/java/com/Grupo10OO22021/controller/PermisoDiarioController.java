@@ -27,7 +27,6 @@ import com.Grupo10OO22021.services.IPersonaService;
 @RequestMapping("/permisodiario")
 public class PermisoDiarioController {
 	
-	
 	@Autowired
 	@Qualifier("permisoDiarioService")
 	private IPermisoDiarioService permisoDiarioService;
@@ -67,18 +66,4 @@ public class PermisoDiarioController {
     	permisoDiarioService.insertOrUpdate(permiso);
         return new RedirectView(ViewRouteHelper.HOME_ROOT);
     }
-    
- 
-   
-
-/*    @GetMapping("/{id}")
-	public ModelAndView get(@PathVariable("id") int id) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PERMISODIARIO_MOSTRAR);
-		mAV.addObject("person", permisoDiarioService.traerPermisoxPersona(id));
-		return mAV;
-	}*/
-    
-   
-   
-
 }
