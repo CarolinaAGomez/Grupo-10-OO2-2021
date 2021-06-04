@@ -29,12 +29,12 @@
                     <p>Que salgan de (opcional)</p>
                     <select name="desde">
                         <option th:value="0">Ninguno</option>
-                        <option th:each="lugar : ${lugares}" th:text="${lugar.lugar}" th:value="lugar.idLugar"></option>
+                        <option th:each="lugar : ${lugares}" th:text="${lugar.lugar}" th:value="${lugar.idLugar}"></option>
                     </select>
                     <p>Lleguen a (opcional)</p>
                     <select name="hasta">
                         <option th:value="0">Ninguno</option>
-                        <option th:each="lugar : ${lugares}" th:text="${lugar.lugar}" th:value="lugar.idLugar"></option>
+                        <option th:each="lugar : ${lugares}" th:text="${lugar.lugar}" th:value="${lugar.idLugar}"></option>
                     </select>
                 </div>
                 <button type="submit">buscar</button>
@@ -43,7 +43,7 @@
                 <p th:text="'Activos entre' + ${fechaInicial} + 'y' + ${fechaFinal}"></p>
             </div>-->
             <div th:if="${permisosDiario} != null">
-                <h2>Permiso diario</h2>
+                <h2>Permiso diario(Sin filtro de ciudad)</h2>
                 <div th:each="permiso : ${permisosDiario}">
                     <br>
                     <h3>Persona</h3>
@@ -79,6 +79,24 @@
                     <h3>Vehiculo</h3>
                     <p th:text="${permiso.rodado.vehiculo}"></p>
                     <p th:text="${permiso.rodado.dominio}"></p>
+                    <h3>Desde</h3>
+                    <p th:text="${permiso.desdeHasta[0].lugar}"></p>
+                    <h3>Hasta</h3>
+                    <p th:text="${permiso.desdeHasta[1].lugar}"></p>
+                </div>
+            </div>
+             <div th:if="${permisosDiarios} != null">
+                <h2>Permiso diario(Con filtro)</h2>
+                <div th:each="permiso : ${permisosDiarios}">
+                    <br>
+                    <h3>Persona</h3>
+                    <p th:text="${permiso.pedido.nombre}"></p>
+                    <p th:text="${permiso.pedido.apellido}"></p>
+                    <p th:text="${permiso.pedido.dni}"></p>
+                    <h3>Dia en el que comienza el permiso</h3>
+                    <p th:text="${permiso.fecha}"></p>
+                    <h3>Motivo del permiso</h3>
+                    <p th:text="${permiso.motivo}"></p>
                     <h3>Desde</h3>
                     <p th:text="${permiso.desdeHasta[0].lugar}"></p>
                     <h3>Hasta</h3>
