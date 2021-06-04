@@ -75,4 +75,13 @@ public class PermisoPeriodoService implements IPermisoPeriodoService {
 		}
 		return permisosActivos;
 	}
+
+	@Override
+	public Set<PermisoPeriodoModel> buscarActivosEntreFechas(String fechaInicial, String fechaFinal, int desde,
+			int hasta) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

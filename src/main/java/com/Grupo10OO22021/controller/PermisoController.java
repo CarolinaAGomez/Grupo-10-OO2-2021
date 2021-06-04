@@ -17,10 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.Grupo10OO22021.helpers.ViewRouteHelper;
-import com.Grupo10OO22021.services.IPermisoDiarioService;
-import com.Grupo10OO22021.services.IPermisoPeriodoService;
-import com.Grupo10OO22021.services.IPermisoService;
 import com.Grupo10OO22021.services.IPersonaService;
 
 @Controller
@@ -48,7 +44,7 @@ public class PermisoController {
     @Qualifier("lugarService")
     public ILugarService lugarService;
 
-    @GetMapping("")
+    @GetMapping("/traer")
     public ModelAndView menu(){
         ModelAndView mV = new ModelAndView(ViewRouteHelper.PERMISO_TRAER);
         return mV;
@@ -97,19 +93,20 @@ public class PermisoController {
     }
     @PreAuthorize("hasRol('ROLE_AUDITOR')")
     @PostMapping("/traerActivos")
-    public ModelAndView traerPermisosActivos(@RequestParam(required = true) String fechaInicial, @RequestParam(required = true) String fechaFinal,
-                                            @RequestParam(required = true) int desde, @RequestParam(required = true) int hasta){
+    public ModelAndView traerPermisosActivos(@RequestParam(required = true) String fechaInicial, 
+    										 @RequestParam(required = true) String fechaFinal,
+                                             @RequestParam(required = true) int desde,
+                                             @RequestParam(required = true) int hasta){
         ModelAndView mV = new ModelAndView(ViewRouteHelper.PERMISO_TRAER_ACTIVOS);
         mV.addObject("lugares", lugarService.getAll());
-        // mV.addObject("fechaInicial", fechaInicial);
-        // mV.addObject("fechaFinal", fechaFinal);
-        
-        // EN DESDE Y HASTA VAN A ESTAR LAS ID DE LOS LUGARES 
-        // SI LA ID ES 0 QUIERE DECIR QUE NO PUSIERON LUGAR
-        // ELEGIR LUGAR ES OPCIONAL
-
-        mV.addObject("permisosDiario", permisoDiarioService.buscarActivosEntreFechas(fechaInicial, fechaFinal));
-        mV.addObject("permisosPeriodo", permisoPeriodoService.buscarActivosEntreFechas(fechaInicial, fechaFinal));
+        System.out.println("este es el desde" + desde);
+        System.out.println("este es el hasta" + hasta);
+        if(desde == 0 && hasta == 0) {
+        	mV.addObject("permisosDiario", permisoDiarioService.buscarActivosEntreFechas(fechaInicial, fechaFinal));
+            mV.addObject("permisosPeriodo", permisoPeriodoService.buscarActivosEntreFechas(fechaInicial, fechaFinal));
+        }else {
+        	mV.addObject("permisosDiarios",permisoDiarioService.buscarActivosEntreFechas(fechaInicial, fechaFinal, desde, hasta));
+        }
         return mV;
     }
     

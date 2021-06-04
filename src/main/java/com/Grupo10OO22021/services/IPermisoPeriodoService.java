@@ -1,8 +1,5 @@
 package com.Grupo10OO22021.services;
 
-import java.util.List;
-import java.util.Set;
-
 import java.util.Set;
 
 import com.Grupo10OO22021.models.PermisoPeriodoModel;
@@ -17,4 +14,5 @@ public interface IPermisoPeriodoService {
 
 	public Set<PermisoPeriodoModel> buscarActivosEntreFechas(String fechaInicial, String fechaFinal);
   
+	public Set<PermisoPeriodoModel> buscarActivosEntreFechas(String fechaInicial, String fechaFinal,int desde,int hasta);
 }
