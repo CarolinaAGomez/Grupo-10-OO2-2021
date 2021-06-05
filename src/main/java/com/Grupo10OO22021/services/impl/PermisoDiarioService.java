@@ -1,7 +1,6 @@
 package com.Grupo10OO22021.services.impl;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,27 +67,22 @@ public class PermisoDiarioService implements IPermisoDiarioService {
 				if(cont == 0) {
 					if(p.getIdLugar() == desde) {
 						if(hasta == 0) {
-							System.out.println("====" +pdm);
 							auxDesdeHasta.add(pdm);	
 						}
 						lugarDesdeAux = new LugarModel(p.getIdLugar(),p.getLugar(),p.getCodigoPostal());
-						System.out.println("====" + lugarDesdeAux);
 					}
 				}if(cont == 1) {
-					if(p.getIdLugar()==hasta) {
+					if(p.getIdLugar()== hasta) {
 						if(desde == 0) {
 							auxDesdeHasta.add(pdm);
 						}
-						lugarHastaAux = new LugarModel(p.getIdLugar(),p.getLugar(),p.getCodigoPostal());
-						System.out.println("==="+ lugarHastaAux);
-						
+						lugarHastaAux = new LugarModel(p.getIdLugar(),p.getLugar(),p.getCodigoPostal());						
 					}
 				}
 				cont++;
 			}
 			if(lugarDesdeAux != null && lugarHastaAux != null) {
 				if(lugarDesdeAux.getIdLugar() == desde && lugarHastaAux.getIdLugar() == hasta) {
-					System.out.println("Esto tendria que no hacerlo" + pdm);
 					auxDesdeHasta.add(pdm);
 				}
 			}

@@ -44,13 +44,13 @@ public class PermisoController {
     @Qualifier("lugarService")
     public ILugarService lugarService;
 
-    @GetMapping("/traer")
+    @GetMapping("")
     public ModelAndView menu(){
         ModelAndView mV = new ModelAndView(ViewRouteHelper.PERMISO_TRAER);
         return mV;
     }
 
-   @GetMapping("/vistaPorPersona")
+   @GetMapping("/traerPorPersona")
    public ModelAndView vista() {
 	   ModelAndView mV = new ModelAndView(ViewRouteHelper.PERMISO_TRAER_POR_PERSONA);
 	   mV.addObject("personas",personaService.GetAll());
@@ -105,7 +105,8 @@ public class PermisoController {
         	mV.addObject("permisosDiario", permisoDiarioService.buscarActivosEntreFechas(fechaInicial, fechaFinal));
             mV.addObject("permisosPeriodo", permisoPeriodoService.buscarActivosEntreFechas(fechaInicial, fechaFinal));
         }else {
-        	mV.addObject("permisosDiarios",permisoDiarioService.buscarActivosEntreFechas(fechaInicial, fechaFinal, desde, hasta));
+        	mV.addObject("permisosDiario",permisoDiarioService.buscarActivosEntreFechas(fechaInicial, fechaFinal, desde, hasta));
+            mV.addObject("permisosPeriodo", permisoPeriodoService.buscarActivosEntreFechas(fechaInicial, fechaFinal, desde, hasta));
         }
         return mV;
     }
