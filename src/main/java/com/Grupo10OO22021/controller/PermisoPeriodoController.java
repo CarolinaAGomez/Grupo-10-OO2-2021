@@ -3,12 +3,15 @@ package com.Grupo10OO22021.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.HashSet;
@@ -53,8 +56,23 @@ public class PermisoPeriodoController {
 	}
 
 	@PostMapping("/create")
-	public RedirectView create(@ModelAttribute("permiso") PermisoPeriodoModel permiso,
+	public RedirectView create(@ModelAttribute("permiso")  @Validated  PermisoPeriodoModel permiso,BindingResult result, RedirectAttributes redirectAttrs,
 			@RequestParam(required = true) int desde, @RequestParam(required = true) int hasta) {
+		
+		if (result.hasErrors()) {			 
+			System.out.println("entrooo");
+			 return new RedirectView(ViewRouteHelper.PERMISOPERIODO_NEW);
+	    }
+		
+		if(permiso.getCantDias()<=0) {
+			System.out.println("entro en el if");
+			 redirectAttrs
+             .addFlashAttribute("mensaje", "LA CANTIDAD TIENE QUE SER MAYOR A 0")
+             .addFlashAttribute("clase", "warning");
+			 return new RedirectView(ViewRouteHelper.PERMISOPERIODO_PRUEBA); //VER ESTO CON SEBA PORQUE SI PONGO ALTA ME LLEVA A UN PATH QUE NO EXISTE
+     
+		}
+		
 		Set<LugarModel> lugares = new HashSet<>();
 		LugarModel desdeLugar = lugarService.findByIdLugar(desde);
 		LugarModel hastaLugar = lugarService.findByIdLugar(hasta);

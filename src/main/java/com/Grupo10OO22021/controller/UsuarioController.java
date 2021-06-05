@@ -2,6 +2,7 @@ package com.Grupo10OO22021.controller;
 
 import com.Grupo10OO22021.helpers.ViewRouteHelper;
 import com.Grupo10OO22021.models.UsuarioModel;
+import com.Grupo10OO22021.repository.IUsuarioRepository;
 import com.Grupo10OO22021.services.IPerfilService;
 import com.Grupo10OO22021.services.IUsuarioService;
 
@@ -70,7 +71,7 @@ public class UsuarioController {
 	        redirectAttrs
 	                .addFlashAttribute("mensaje", "Ya existe un usuario con ese dni")
 	                .addFlashAttribute("clase", "warning");
-	        return new RedirectView(ViewRouteHelper.USUARIO_PRUEBA); //VER ESTO CON SEBA PORQUE SI PONGO ALTA ME LLEVA A UN PATH QUE NO EXISTE
+	        return new RedirectView(ViewRouteHelper.USUARIO_PRUEBA); 
 	        
 	    }
 		
@@ -89,8 +90,9 @@ public class UsuarioController {
 
     @PreAuthorize("hasRol('ROLE_ADMIN')")
     @GetMapping("/update/{id}")
-    public ModelAndView modifcarUsuario(@PathVariable("id") long id ){
-        ModelAndView mav = new ModelAndView(ViewRouteHelper.USUARIO_MODIFICAR);
+    public ModelAndView modifcarUsuario( @PathVariable("id") long id ){
+    	
+    	ModelAndView mav = new ModelAndView(ViewRouteHelper.USUARIO_MODIFICAR);
         UsuarioModel userModel =  usuarioService.traerUsuarioYPerfilPorId(id);
         mav.addObject("usuario", userModel);
         mav.addObject("perfiles", perfilService.GetAll());
