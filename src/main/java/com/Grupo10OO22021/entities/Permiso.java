@@ -1,11 +1,9 @@
 package com.Grupo10OO22021.entities;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -99,12 +97,7 @@ public class Permiso {
 		this.desdeHasta = desdeHasta;
 	}
 
-
-	
 	public void agregarLugaraPermiso( Lugar l) {
-		desdeHasta.add(l);
-		
+		desdeHasta.add(l);	
 	}
-	
-	
 }

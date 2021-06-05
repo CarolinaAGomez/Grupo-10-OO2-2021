@@ -23,37 +23,7 @@ public class LugarConverter {
 		
 	}
 	
-	/*
-	private PermisoConverter permisoConverter;
 	
-	public LugarModel entityToModel(Lugar lugar) {
-		Set<PermisoModel> permiso = new HashSet<>();
-		for(Permiso p : lugar.getPermiso()){
-			permiso.add(permisoConverter.entityToModel(p));
-		}
-	
-		return new LugarModel(lugar.getIdLugar(),
-								lugar.getLugar(),
-								lugar.getCodigoPostal(),
-								permiso
-								);
-	}
-	
-	
-	public Lugar entityToModel(LugarModel lugarModel) {
-		Set<Permiso> permiso = new HashSet<>();
-		for(PermisoModel p : lugarModel.getPermiso()){
-			permiso.add(permisoConverter.modelToEntity(p));
-		}
-	
-		return new Lugar(lugarModel.getIdLugar(),
-				lugarModel.getLugar(),
-				lugarModel.getCodigoPostal(),
-								permiso
-								);
-	}
-	
-	*/
 	
 	
 }

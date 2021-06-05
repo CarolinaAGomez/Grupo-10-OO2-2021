@@ -10,5 +10,6 @@ public interface IRodadoService {
 	public RodadoModel inserOrUpdate (RodadoModel rodado);
 	
 	
-	public List<Rodado> getAll();
+	public List<RodadoModel> getAll();
+	public Rodado traerDominioRodado(String dominio);
 }

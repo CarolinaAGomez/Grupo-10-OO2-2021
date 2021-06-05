@@ -26,13 +26,18 @@ public class PermisoPeriodoConverter {
 	@Autowired
 	@Qualifier("lugarConverter")
 	private LugarConverter lugarConverter;
-		
+	
+	
 	public PermisoPeriodoModel entityToModel(PermisoPeriodo permisoPeriodo) {
 		Set<LugarModel> desdeHasta = new HashSet<>();
 		for(Lugar l : permisoPeriodo.getDesdeHasta()){
 			desdeHasta.add(lugarConverter.entityToModel(l));
 		}
-		return new PermisoPeriodoModel(permisoPeriodo.getIdPermiso(),
+		PermisoPeriodoModel permiso=null;
+		if (permisoPeriodo!= null) {
+			
+	
+			permiso= new PermisoPeriodoModel(permisoPeriodo.getIdPermiso(),
 										personaConverter.entityToModel(permisoPeriodo.getPedido()),
 										permisoPeriodo.getFecha(),
 										desdeHasta,
@@ -42,6 +47,10 @@ public class PermisoPeriodoConverter {
 										);
 		
 		}
+		return permiso;
+	}
+		
+	
 	
 	public PermisoPeriodo modelToEntity(PermisoPeriodoModel permisoPeriodoModel) {
 		Set<Lugar> desdeHasta = new HashSet<>();
@@ -58,5 +67,25 @@ public class PermisoPeriodoConverter {
 									);
 		
 	}
+	
+	/*
+	 * public PermisoPeriodoModel entityToModel(PermisoPeriodo permisoPeriodo) {
+		Set<LugarModel> desdeHasta = new HashSet<>();
+		for(Lugar l : permisoPeriodo.getDesdeHasta()){
+			desdeHasta.add(lugarConverter.entityToModel(l));
+		}
+		
+		return new PermisoPeriodoModel(permisoPeriodo.getIdPermiso(),
+										personaConverter.entityToModel(permisoPeriodo.getPedido()),
+										permisoPeriodo.getFecha(),
+										desdeHasta,
+										permisoPeriodo.getCantDias(),
+										permisoPeriodo.isVacaciones(),
+										rodadoConverter.entityToModel(permisoPeriodo.getRodado())
+										);
+		
+		}*/
+	 
+	
 
 }

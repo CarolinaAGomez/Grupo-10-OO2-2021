@@ -10,22 +10,58 @@
 </head>
 <body>
     <div class="contenedor">
-        <div class="header">
+        <div class="header" th:if="${user} == null">
             <div class="menu">
                 <nav>
                     <ul class="list">
                         <li><a th:href="@{/login}">Login</a></li>
-                        <li><a th:href="@{/rodado}">Rodado</a></li>
-                        <li><a th:href="@{/permisodiario}">Permiso Diario</a></li>
-                        <li><a th:href="@{/permisoperiodo}">Permiso Periodo</a></li>
-                         
-                        
-                       
+                        <!--<li><a th:href="@{/permiso}">Permiso Traer</a></li>  -->
                     </ul>
                 </nav>
             </div>
         </div>
+        <div class="header" th:if="${user} != null">
+			<div class="usuario">
+				<i class="fas fa-user"></i>
+				<p th:text="${user.username}"></p>
+			</div>
+			<div class="menu" >
+				<nav>
+					<ul class="list">
+						<li><a id="cuenta">Cuenta <i class="fas fa-chevron-down"></i></a>
+							<div id="submenu" class="submenu">
+								<ul>
+									<li>
+										<form th:action="@{/logout}" method="POST">
+											<button type="submit">Salir</button>
+										</form>
+									</li>
+								</ul>
+
+							</div>
+                        </li>
+					</ul>
+				</nav>
+			</div>
+		</div>
         <div class="contenido">
+            <div class="itemListados">
+				<div>
+                    <a th:href="@{/rodado}">Crear rodado</a>
+				</div>
+				<div>
+					<a th:href="@{/persona}">Crear persona</a>
+				</div>
+                <div>
+					<a th:href="@{/permiso}">Traer permisos</a>
+				</div>
+                <div>
+					<a th:href="@{/permisoperiodo}">Crear permiso periodo</a>
+				</div>
+                <div>
+                    <a th:href="@{/permisodiario}">Crear permiso Diario</a>
+				</div>
+			</div>
         </div>
         <div class="footer">
             <p>Trabajo Práctico Cuatrimestral - Universidad Nacional de Lanus - Orientación a Objetos 2</p>

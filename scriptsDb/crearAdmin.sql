@@ -8,5 +8,4 @@ select * from perfil;
 select * from usuario;
 select id_usuario as id,username,password,p.nombre_rol as rol from usuario u inner join perfil p on u.id_perfil = p.id_perfil;
 
-select * from persona;
 

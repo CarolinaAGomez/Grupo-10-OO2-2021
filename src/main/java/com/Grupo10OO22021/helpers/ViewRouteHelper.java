@@ -39,6 +39,7 @@ public class ViewRouteHelper {
     
 	//PERSONA
 	public final static String PERSONA_NEW = "persona/alta";
+	 public final static String PERSONA_PRUEBA = "/persona";
 
 	// REDIRECT
 	public final static String PERSONA_ROOT = "/persona";
@@ -47,6 +48,10 @@ public class ViewRouteHelper {
 	//PERMISO
 	public final static String PERMISO_TRAER = "permiso/traer";
 	public final static String PERMISO_TRAER_POR_PERSONA = "permiso/traerPorPersona";
+	public final static String PERMISO_VISTA_TRAER_POR_PERSONA ="permiso/mostrarTraerPorPersona";
+	public final static String PERMISO_TRAER_POR_RODADO = "permiso/traerPorRodado";
+	public final static String PERMISO_TRAER_ACTIVOS = "permiso/traerActivos";
+
 	//REDIRECT
 	public final static String PERMISO_ROOT = "/permiso";
 
@@ -56,6 +61,7 @@ public class ViewRouteHelper {
 	 
 	//PERMISOPERIODO
 	public final static String PERMISOPERIODO_NEW = "/permisoperiodo/alta";
+	public final static String PERMISOPERIODO_PRUEBA = "/permisoperiodo";
 	
 
   	//AUDITOR
@@ -66,6 +72,7 @@ public class ViewRouteHelper {
 	
 	//RODADO
 	public final static String RODADO_NEW ="/rodado/new";
+	public final static String RODADO_PRUEBA = "/rodado";
 	
 	//REDIRECT 
 	public final static String RODADO_ROOT="/rodado";

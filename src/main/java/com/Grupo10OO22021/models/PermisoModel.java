@@ -1,12 +1,10 @@
 package com.Grupo10OO22021.models;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.Grupo10OO22021.entities.Lugar;
 
 public class PermisoModel {
 

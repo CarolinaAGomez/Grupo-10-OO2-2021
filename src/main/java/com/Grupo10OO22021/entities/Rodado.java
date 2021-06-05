@@ -24,7 +24,6 @@ public class Rodado {
 	@Column(name = "vehiculo")
 	private String vehiculo;
 	
-	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "rodado")
 	private Set<PermisoPeriodo> permidoPeriodo;
 

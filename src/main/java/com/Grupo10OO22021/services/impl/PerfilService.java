@@ -64,7 +64,6 @@ public class PerfilService implements IPerfilService{
 }
 	
 
-
 /*
  * 
  * Entidades = base de datos

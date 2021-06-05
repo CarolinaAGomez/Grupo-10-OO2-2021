@@ -10,5 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository("personaRepository")
 public interface IPersonaRepository extends JpaRepository<Persona, Serializable>  {
+	
+	public  Persona findByIdPersona(int id);
+	public  Persona findByDni(long dni);
     
 }
