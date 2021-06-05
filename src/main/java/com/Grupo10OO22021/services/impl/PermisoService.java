@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.Grupo10OO22021.converters.PermisoConverter;
 import com.Grupo10OO22021.entities.Permiso;
-import com.Grupo10OO22021.entities.Persona;
 import com.Grupo10OO22021.models.PermisoModel;
 import com.Grupo10OO22021.repository.IPermisoRepository;
 import com.Grupo10OO22021.services.IPermisoService;

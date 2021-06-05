@@ -18,7 +18,7 @@ public class AdminController {
     @GetMapping("")
     public ModelAndView menu(){
         ModelAndView mav = new ModelAndView(ViewRouteHelper.MENU_ADMIN);
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();            
 		mav.addObject("user", user);
         return mav;
     }

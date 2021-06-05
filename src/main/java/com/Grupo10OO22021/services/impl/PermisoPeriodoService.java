@@ -1,7 +1,6 @@
 package com.Grupo10OO22021.services.impl;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
-import java.util.Set;
 
 
 import com.Grupo10OO22021.converters.PermisoPeriodoConverter;
 
 import com.Grupo10OO22021.entities.PermisoPeriodo;
+import com.Grupo10OO22021.models.LugarModel;
 import com.Grupo10OO22021.models.PermisoPeriodoModel;
 import com.Grupo10OO22021.repository.IPermisoPeriodoRepository;
 import com.Grupo10OO22021.services.IPermisoPeriodoService;
@@ -79,9 +77,73 @@ public class PermisoPeriodoService implements IPermisoPeriodoService {
 	@Override
 	public Set<PermisoPeriodoModel> buscarActivosEntreFechas(String fechaInicial, String fechaFinal, int desde,
 			int hasta) {
-		// TODO Auto-generated method stub
-		return null;
+		Set<PermisoPeriodoModel>  permisosPeriodo = new HashSet<>();
+		for (PermisoPeriodoModel ppm : buscarActivosEntreFechas(fechaInicial,fechaFinal)) {
+			Set<LugarModel> desdeHasta = ppm.getDesdeHasta();
+			int cont = 0;
+			LugarModel lugarDesdeAux = null;
+			LugarModel lugarHastaAux = null;
+			for(LugarModel l : desdeHasta){
+				if(cont == 0) {
+					if(l.getIdLugar() == desde) {
+						if(hasta == 0) {
+							permisosPeriodo.add(ppm);	
+						}
+						lugarDesdeAux = new LugarModel(l.getIdLugar(),l.getLugar(),l.getCodigoPostal());
+					}
+				}if(cont == 1) {
+					if(l.getIdLugar() == hasta) {
+						if(desde == 0) {
+							permisosPeriodo.add(ppm);
+						}
+						lugarHastaAux = new LugarModel(l.getIdLugar(),l.getLugar(),l.getCodigoPostal());						
+					}
+				}
+				cont++;
+			}
+			if(lugarDesdeAux != null && lugarHastaAux != null) {
+				if(lugarDesdeAux.getIdLugar() == desde && lugarHastaAux.getIdLugar() == hasta) {
+					permisosPeriodo.add(ppm);
+				}
+			}
+		}
+		return permisosPeriodo;
 	}
 
-
+	
+	/*@Override
+	public Set<PermisoDiarioModel> buscarActivosEntreFechas(String fechaInicial, String fechaFinal, int desde, int hasta) {
+		Set<PermisoDiarioModel> auxDesdeHasta = new HashSet<>();
+		for (PermisoDiarioModel pdm : buscarActivosEntreFechas(fechaInicial,fechaFinal)) {
+			Set<LugarModel> auxLugar =  pdm.getDesdeHasta();
+			int cont = 0;
+			LugarModel lugarDesdeAux = null;
+			LugarModel lugarHastaAux = null;
+			for (LugarModel p: auxLugar) {
+				if(cont == 0) {
+					if(p.getIdLugar() == desde) {
+						if(hasta == 0) {
+							auxDesdeHasta.add(pdm);	
+						}
+						lugarDesdeAux = new LugarModel(p.getIdLugar(),p.getLugar(),p.getCodigoPostal());
+					}
+				}if(cont == 1) {
+					if(p.getIdLugar()== hasta) {
+						if(desde == 0) {
+							auxDesdeHasta.add(pdm);
+						}
+						lugarHastaAux = new LugarModel(p.getIdLugar(),p.getLugar(),p.getCodigoPostal());						
+					}
+				}
+				cont++;
+			}
+			if(lugarDesdeAux != null && lugarHastaAux != null) {
+				if(lugarDesdeAux.getIdLugar() == desde && lugarHastaAux.getIdLugar() == hasta) {
+					auxDesdeHasta.add(pdm);
+				}
+			}
+			
+		}
+		return auxDesdeHasta;
+	}*/
 }
