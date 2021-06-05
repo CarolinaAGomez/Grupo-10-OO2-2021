@@ -14,7 +14,7 @@ public class RodadoModel {
 	public RodadoModel(int idRodado, String dominio, String vehiculo) {
 		super();
 		this.idRodado = idRodado;
-		this.dominio = dominio.toLowerCase();
+		this.dominio = dominio;
 		this.vehiculo = vehiculo;
 	}
 
@@ -31,7 +31,7 @@ public class RodadoModel {
 	}
 
 	public void setDominio(String dominio) {
-		this.dominio = dominio.toLowerCase();
+		this.dominio = dominio;
 	}
 
 	public String getVehiculo() {

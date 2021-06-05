@@ -34,7 +34,7 @@ public class RodadoController {
 	
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("rodado")  @Validated RodadoModel rodadoModel, BindingResult result, RedirectAttributes redirectAttrs) {
-		
+		rodadoModel.setDominio(rodadoModel.getDominio().toLowerCase());
 		for(RodadoModel r : rodadoService.getAll()) {
 			if ((r.getDominio().equals(rodadoModel.getDominio()))) {
 		        redirectAttrs

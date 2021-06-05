@@ -71,7 +71,7 @@ public class UsuarioController {
 	        redirectAttrs
 	                .addFlashAttribute("mensaje", "Ya existe un usuario con ese dni")
 	                .addFlashAttribute("clase", "warning");
-	        return new RedirectView(ViewRouteHelper.USUARIO_PRUEBA); //VER ESTO CON SEBA PORQUE SI PONGO ALTA ME LLEVA A UN PATH QUE NO EXISTE
+	        return new RedirectView(ViewRouteHelper.USUARIO_PRUEBA); 
 	        
 	    }
 		
