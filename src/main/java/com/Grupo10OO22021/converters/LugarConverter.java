@@ -1,14 +1,10 @@
 package com.Grupo10OO22021.converters;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.springframework.stereotype.Component;
 
 import com.Grupo10OO22021.entities.Lugar;
-import com.Grupo10OO22021.entities.Permiso;
 import com.Grupo10OO22021.models.LugarModel;
-import com.Grupo10OO22021.models.PermisoModel;
+
 
 @Component("lugarConverter")
 public class LugarConverter {

@@ -44,16 +44,23 @@ public class ViewRouteHelper {
 	public final static String PERSONA_ROOT = "/persona";
 	
 	
+	//PERMISO
+	public final static String PERMISO_TRAER = "permiso/traer";
+	public final static String PERMISO_TRAER_POR_PERSONA = "permiso/traerPorPersona";
+	public final static String PERMISO_VISTA_TRAER_POR_PERSONA ="permiso/mostrarTraerPorPersona";
+	public final static String PERMISO_TRAER_POR_RODADO = "permiso/traerPorRodado";
+	public final static String PERMISO_TRAER_ACTIVOS = "permiso/traerActivos";
+
+	//REDIRECT
+	public final static String PERMISO_ROOT = "/permiso";
+
 	//PERMISODIARIO
 	public final static String PERMISODIARIO_NEW = "/permisodiario/alta";
 	public final static String PERMISODIARIO_MOSTRAR = "permisodiario/mostrar";
 	 
-	 
 	//PERMISOPERIODO
 	public final static String PERMISOPERIODO_NEW = "/permisoperiodo/alta";
 	
-
-
 
   	//AUDITOR
     public final static String AUDITOR_LISTAR = "auditor/listar";

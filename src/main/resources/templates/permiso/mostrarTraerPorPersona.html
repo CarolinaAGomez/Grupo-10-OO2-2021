@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP OO2 GRUPO 10</title>
+<link href="../static/css/general.css" th:href="@{/css/general.css}" rel="stylesheet">
+<script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="contenedor">
+		<div class="header">
+			<div class="menu">
+				<nav>
+					<ul class="list">
+						<li><a th:href="@{/login}">Login</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<div class="contenido">
+			<div class="backButtonAlta">
+				<a th:href="@{/}"><i class="fas fa-arrow-left"></i></a>
+			</div>
+			<h2>Permiso diario</h2>
+			<div th:if="${permiso_diario} != null">
+                <div th:each="permiso : ${permiso_diario}">
+                    <h3>Persona</h3>
+                    <p th:text="${permiso.pedido.nombre}"></p>
+                    <p th:text="${permiso.pedido.apellido}"></p>
+                    <p th:text="${permiso.pedido.dni}"></p>
+                    <h3>Dia en el que comienza el permiso</h3>
+                    <p th:text="${permiso.fecha}"></p>
+                    <h3>Motivo del permiso</h3>
+                    <p th:text="${permiso.motivo}"></p>
+                    <h3>Desde</h3>
+                    <p th:text="${permiso.desdeHasta[0].lugar}"></p>
+                    <h3>Hasta</h3>
+                    <p th:text="${permiso.desdeHasta[1].lugar}"></p>
+                </div>
+            </div>
+            <h2>Permiso periodo</h2>
+            <div th:if="${permiso_periodo} != null">
+                <div th:each="permiso : ${permiso_periodo}">
+                    <h3>Persona</h3>
+                    <p th:text="${permiso.pedido.nombre}"></p>
+                    <p th:text="${permiso.pedido.apellido}"></p>
+                    <p th:text="${permiso.pedido.dni}"></p>
+                    <h3>Dia en el que comienza el permiso</h3>
+                    <p th:text="${permiso.fecha}"></p>
+                    <h3>Dias de duración del permiso</h3>
+                    <p th:text="${permiso.cantDias}"></p>
+                    <h3 th:if="${permiso.vacaciones}" >El permiso es por vacaciones</h3>
+                    <h3 th:if="!${permiso.vacaciones}" >El permiso no es por vacaciones</h3>
+                    <h3>Vehiculo</h3>
+                    <p th:text="${permiso.rodado.vehiculo}"></p>
+                    <p th:text="${permiso.rodado.dominio}"></p>
+                    <h3>Desde</h3>
+                    <p th:text="${permiso.desdeHasta[0].lugar}"></p>
+                    <h3>Hasta</h3>
+                    <p th:text="${permiso.desdeHasta[1].lugar}"></p>
+                </div> 
+		</div>
+		</div>
+		<div class="footer">
+			<p>Trabajo Práctico Cuatrimestral - Universidad Nacional de Lanus - Orientación a Objetos 2</p>
+			<ol>
+				<li>Crespi, Sebastián</li>
+				<li><div class="punto"></div></li>
+				<li>Di Gangi, Mariano</li>
+				<li><div class="punto"></div></li>
+				<li>Gómez, Carolina</li>
+				<li><div class="punto"></div></li>
+				<li>Gonzalez Canosa, Juan Manuel</li>
+			</ol>
+			<a href="https://github.com/CarolinaAGomez/Grupo-10-OO2-2021"><i class="fab fa-github"></i> Grupo número 10 </a>
+		</div>
+	</div>
+</body>
+</html>
+<!--  
+-->
