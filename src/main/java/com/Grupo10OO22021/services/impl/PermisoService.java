@@ -41,10 +41,12 @@ public class PermisoService implements IPermisoService {
 	}
 
 	@Override
-	public PermisoModel traerPermisoxPersona(int idPersona) {
+	public PermisoModel findByPedido(int idPersona) {
 		// TODO Auto-generated method stub
-		return null;
+		
+			return permisoConverter.entityToModel(permisoRepository.findByPedido(idPersona));
 	}
 
+	
 
 }

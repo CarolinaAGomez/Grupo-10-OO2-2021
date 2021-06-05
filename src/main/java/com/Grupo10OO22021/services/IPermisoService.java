@@ -11,6 +11,6 @@ public interface IPermisoService {
 
 	public PermisoModel insertOrUpdate(PermisoModel permiso);
 
-	public PermisoModel traerPermisoxPersona(int idPersona);
+	public PermisoModel findByPedido(int idPersona);
 
 }

@@ -3,6 +3,7 @@ package com.Grupo10OO22021.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class PermisoDiarioController {
 	
 	
 	@Autowired
+	@Qualifier("permisoService")
 	private PermisoService permisoService;
 	
 	@Autowired
@@ -64,7 +66,7 @@ public class PermisoDiarioController {
     @GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PERMISODIARIO_MOSTRAR);
-		mAV.addObject("person", permisoService.traerPermisoxPersona(id));
+		mAV.addObject("person", permisoService.findByPedido(id));
 		return mAV;
 	}
     
