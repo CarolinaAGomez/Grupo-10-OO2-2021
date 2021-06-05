@@ -10,4 +10,6 @@ public interface IPersonaService {
     public PersonaModel insertOrUpdate(PersonaModel persona);
     
     public List<Persona> GetAll();
+    
+    public PersonaModel traerDniPersona(long dni);
 }

@@ -22,6 +22,9 @@
                 <div class="input">
                     <input type="text" th:field="*{apellido}" th:text="${apellido}" placeholder="Apellido" required="required" />
                 </div>
+                <small th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+             th:text="${mensaje}"
+             class="alert"></small>
                 <div class="input">
                     <input type="text" th:field="*{dni}" th:text="${dni}" placeholder="Dni" required="required" />
                 </div>

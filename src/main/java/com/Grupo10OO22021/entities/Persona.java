@@ -44,7 +44,7 @@ public class Persona {
 	public int getIdPersona() {
 		return idPersona;
 	}
-	public void setIdPersona(int idPersona) {
+	protected void setIdPersona(int idPersona) {
 		this.idPersona = idPersona;
 	}
 	public String getNombre() {
