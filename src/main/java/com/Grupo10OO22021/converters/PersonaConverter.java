@@ -26,8 +26,21 @@ public class PersonaConverter {
 		}
 	
 	
-	
-		
+	  
+	  public Persona modelToEntity(PersonaModel personaModel) {
+		  Persona persona = null;
+			if(personaModel != null){
+			
+				persona= new Persona
+					(personaModel.getIdPersona(),
+							personaModel.getNombre(), 
+							personaModel.getApellido(),
+							personaModel.getDni());
+				
+				
+		}
+			return persona;
+		/*
 	
 	public Persona modelToEntity(PersonaModel personaModel) {
 		
@@ -39,6 +52,6 @@ public class PersonaConverter {
 	}
 	
 
+*/
 
-
-}
+}}

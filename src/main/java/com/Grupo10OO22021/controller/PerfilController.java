@@ -43,7 +43,8 @@ public class PerfilController {
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.PERFIL_INDEX);
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		mV.addObject("user", user);
-		mV.addObject("perfil" ,perfilService.GetAll());
+		//mV.addObject("perfil" ,perfilService.GetAll());
+		mV.addObject("perfil" ,perfilService.findAllByEnabledTrue());
 		return mV;
 	}
 	
@@ -60,7 +61,35 @@ public class PerfilController {
 		perfilService.insertOrUpdate(perfilModel);
 		return new RedirectView(ViewRouteHelper.PERFIL_ROOT);
 	}
-
+	
+	
+	@PreAuthorize("hasRol('ROLE_ADMIN')")
+	@PostMapping("/delete/{id}")
+	public RedirectView delete(@PathVariable("id") int id,@Validated Perfil perfil, BindingResult result,RedirectAttributes redirectAttrs) {
+		PerfilModel perfilM= perfilService.findById(id);
+		System.out.println("esto es perfilm"+perfilM);
+		
+		if (usuarioService.traerUsuarioYPerfilPorIdperfil(id)!=null) {
+			
+			System.out.println(usuarioService.traerUsuarioYPerfilPorIdperfil(id));
+			System.out.println("esto es por id"+usuarioService.traerUsuarioYPerfilPorId(id));
+	        redirectAttrs
+	                .addFlashAttribute("muser", "NO SE PUEDE BORRAR EL PERFIL YA QUE TIENE UN USUARIO ASOCIADO")
+	                .addFlashAttribute("username", "warning");
+	        return new RedirectView(ViewRouteHelper.PERFIL_ROOT);
+	        
+	    }
+		
+		
+		perfilM.setEnabled(false);
+		System.out.println(perfilM.isEnabled());
+		perfilService.insertOrUpdate(perfilM);
+	
+		return new RedirectView(ViewRouteHelper.PERFIL_ROOT);
+	}
+	
+	
+/*
 	@PreAuthorize("hasRol('ROLE_ADMIN')")
 	@PostMapping("/delete/{id}")
 	public RedirectView delete(@PathVariable("id") int id,@Validated Perfil perfil, BindingResult result,RedirectAttributes redirectAttrs) {
@@ -76,9 +105,9 @@ public class PerfilController {
 		
 		
 		perfilService.remove(id);
-		System.out.println(id);
+		
 		return new RedirectView(ViewRouteHelper.PERFIL_ROOT);
-	}
+	}*/
 	
 	@PreAuthorize("hasRol('ROLE_ADMIN')")
 	@GetMapping("/update/{id}")

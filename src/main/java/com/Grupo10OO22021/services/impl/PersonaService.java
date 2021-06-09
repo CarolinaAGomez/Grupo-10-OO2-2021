@@ -41,4 +41,10 @@ public class PersonaService implements IPersonaService{
 	PersonaModel persona = personaConverter.entityToModel(personaRepository.findByDni(dni));
 		return persona;
 	}
+
+	@Override
+	public PersonaModel traerIdPersona(int idPersona) {
+		PersonaModel persona = personaConverter.entityToModel(personaRepository.findByIdPersona(idPersona));
+		return persona;
+	}
 }

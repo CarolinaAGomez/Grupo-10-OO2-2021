@@ -12,7 +12,7 @@ public class PermisoModel {
 	private PersonaModel pedido;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
-	private Set<LugarModel> desdeHasta; //sacar
+	private Set<LugarModel> desdeHasta; 
 
 	public PermisoModel() {}
 

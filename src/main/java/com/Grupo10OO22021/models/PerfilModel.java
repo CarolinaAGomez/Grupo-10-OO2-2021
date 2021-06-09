@@ -8,20 +8,23 @@ public class PerfilModel {
 	
 	private int idPerfil;
 	private String nombreRol;
+	private boolean enabled=true;;
 	private Set<UsuarioModel> usuarios = new HashSet<>();
 		
 	public PerfilModel() {}
 
-	public PerfilModel(int idPerfil, String nombreRol) {
+	public PerfilModel(int idPerfil, String nombreRol, boolean enabled) {
 		super();
 		this.setIdPerfil(idPerfil);
 		this.nombreRol = nombreRol;
+		this.enabled=enabled;
 	}
 	
 	public PerfilModel(int idPerfil, String nombreRol, Set<UsuarioModel> usuarios) {
 		super();
 		this.idPerfil = idPerfil;
 		this.nombreRol = nombreRol;
+		
 		this.usuarios = usuarios;
 	}
 
@@ -48,6 +51,17 @@ public class PerfilModel {
 
 	public void setUsuarios(Set<UsuarioModel> usuarios) {
 		this.usuarios = usuarios;
+	}
+	
+	
+	
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override

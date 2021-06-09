@@ -9,10 +9,10 @@ import com.Grupo10OO22021.models.PerfilModel;
 public class PerfilConverter {
 
 	public PerfilModel entityToModel(Perfil perfil) {
-		return new PerfilModel(perfil.getIdPerfil(),perfil.getNombreRol());	
+		return new PerfilModel(perfil.getIdPerfil(),perfil.getNombreRol(), perfil.isEnabled());	
 	}
 	
 	public Perfil modeltoEntity(PerfilModel perfilModel) {
-		return new Perfil(perfilModel.getIdPerfil(),perfilModel.getNombreRol());
+		return new Perfil(perfilModel.getIdPerfil(),perfilModel.getNombreRol(), perfilModel.isEnabled());
 	}
 }

@@ -13,6 +13,9 @@ public interface IUsuarioService {
 	public UsuarioModel traerUsuarioPorId(long id);
 
 	public UsuarioModel traerUsuarioYPerfilPorId(long id);
+	
+	//borrarr
+	public UsuarioModel traerUsuarioYPerfilPorIdperfil(int id);
 
 	public UsuarioModel traerUsuarioYPerfilPorUsername(String username);
 	
