@@ -17,9 +17,15 @@
 				th:object="${permiso}" method="POST">
 				<div class="input">¿Qué dia solicita el permiso?</div>
 				<div class="input">
-					<input type="hidden" th:field="*{idPermiso}" readonly> <input
-						type="date" th:field="*{fecha}" placeholder="Fecha">
-				</div>
+				
+			<input type="hidden" th:field="*{idPermiso}" readonly> 
+			<input type="date" th:field="*{fecha}"  placeholder="Fecha">
+             </div>
+             
+             <small th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+             th:text="${mensaje}" class="alert"></small>
+            
+             
 				<div class="input">Motivo por el cual solicita el permiso</div>
 				<div class="input">
 					<input type="text" th:field="*{motivo}" placeholder="Motivo">

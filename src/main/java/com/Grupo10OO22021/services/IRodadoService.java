@@ -2,6 +2,7 @@ package com.Grupo10OO22021.services;
 
 import java.util.List;
 
+import com.Grupo10OO22021.entities.Rodado;
 import com.Grupo10OO22021.models.RodadoModel;
 
 public interface IRodadoService {
@@ -10,4 +11,5 @@ public interface IRodadoService {
 	
 	
 	public List<RodadoModel> getAll();
+	public Rodado traerDominioRodado(String dominio);
 }

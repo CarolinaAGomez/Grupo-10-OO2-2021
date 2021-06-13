@@ -17,11 +17,24 @@
 				<div class="input">¿Qué dia solicita el permiso?</div>
 				<div class="input">
 					<input type="hidden" th:field="*{idPermiso}" readonly> 
+					
+					
 					<input type="date" th:field="*{fecha}" placeholder="Fecha"> 
+					
+					
+					<small th:classappend="'alert-' + (${clases != null} ? ${clases} : info)" th:if="${mensajes != null}"
+             th:text="${mensajes}" class="alert"></small>
 				</div>
+				
+				<small th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+             th:text="${mensaje}" class="alert"></small>
 				<div class="input">
-					<input type="number" th:field="*{cantDias}" placeholder="¿Durante cuantos dias solicita el permiso?"> 
+					<input type="number" th:field="*{cantDias}" placeholder="¿Durante cuantos dias solicita el permiso?" class="form-control">
+					 
 				</div>
+				
+				
+				
 				<div class="input">¿Es por vacaciones?</div>
 				<div class="input">
 					<input  type="radio" th:field="*{vacaciones}" value="true" >Si

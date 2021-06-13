@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+
+
 
 @Entity
 @Table(name = "PermisoPeriodo")
@@ -17,6 +20,7 @@ import javax.persistence.Table;
 public class PermisoPeriodo extends Permiso {
 
 	@Column(name = "cantDias")
+	@Min(value=1,message="Debe ser mayor a 1")
 	private int cantDias;
 	@Column(name = "vacaciones")
 	private boolean vacaciones;
@@ -32,6 +36,7 @@ public class PermisoPeriodo extends Permiso {
 	public PermisoPeriodo(int idPermiso, Persona persona, LocalDate fecha, Set<Lugar> desdeHasta, int cantDias,
 			boolean vacaciones, Rodado rodado) {
 		super(idPermiso, persona, fecha, desdeHasta);
+		
 		this.cantDias = cantDias;
 		this.vacaciones = vacaciones;
 		this.rodado = rodado;

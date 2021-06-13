@@ -3,6 +3,7 @@ package com.Grupo10OO22021.services.impl;
 import com.Grupo10OO22021.converters.PersonaConverter;
 import com.Grupo10OO22021.entities.Persona;
 import com.Grupo10OO22021.models.PersonaModel;
+import com.Grupo10OO22021.models.UsuarioModel;
 import com.Grupo10OO22021.repository.IPersonaRepository;
 import com.Grupo10OO22021.services.IPersonaService;
 
@@ -24,6 +25,7 @@ public class PersonaService implements IPersonaService{
     private IPersonaRepository personaRepository;
 
     public PersonaModel insertOrUpdate(PersonaModel persona){
+    	
         return personaConverter.entityToModel(personaRepository.save(personaConverter.modelToEntity(persona)));
     }
 
@@ -31,5 +33,18 @@ public class PersonaService implements IPersonaService{
 	public List<Persona> GetAll() {
 		
 		return personaRepository.findAll();
+	}
+
+	@Override
+	public PersonaModel traerDniPersona(long dni) {
+		
+	PersonaModel persona = personaConverter.entityToModel(personaRepository.findByDni(dni));
+		return persona;
+	}
+
+	@Override
+	public PersonaModel traerIdPersona(int idPersona) {
+		PersonaModel persona = personaConverter.entityToModel(personaRepository.findByIdPersona(idPersona));
+		return persona;
 	}
 }

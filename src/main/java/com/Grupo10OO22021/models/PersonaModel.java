@@ -49,4 +49,12 @@ public class PersonaModel {
 		this.dni = dni;
 	}
 
+	@Override
+	public String toString() {
+		return "PersonaModel [idPersona=" + idPersona + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ "]";
+	}
+
+	
+	
 }

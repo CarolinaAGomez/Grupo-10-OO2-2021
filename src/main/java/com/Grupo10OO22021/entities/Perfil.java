@@ -22,15 +22,19 @@ public class Perfil {
 	@Column(name = "nombreRol")
 	private String nombreRol;
 	
+	
+	private boolean enabled=true;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="perfil")
 	private Set<Usuario> usuarios;
 	
 	public Perfil() {}
 
-	public Perfil(int idPerfil,String nombreRol) {
+	public Perfil(int idPerfil,String nombreRol, boolean enabled) {
 		super();
 		this.idPerfil = idPerfil;
 		this.nombreRol = nombreRol;
+		this.enabled=enabled;
 	}
 	
 	public int getIdPerfil() {
@@ -56,6 +60,16 @@ public class Perfil {
 	public void setUsuarios(Set<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	
 }
 
 
