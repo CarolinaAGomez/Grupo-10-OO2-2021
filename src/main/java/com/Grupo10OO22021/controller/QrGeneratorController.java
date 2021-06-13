@@ -19,6 +19,7 @@ import com.Grupo10OO22021.entities.Permiso;
 import com.Grupo10OO22021.entities.PermisoDiario;
 import com.Grupo10OO22021.entities.Persona;
 import com.Grupo10OO22021.helpers.ViewRouteHelper;
+import com.Grupo10OO22021.models.LugarModel;
 import com.Grupo10OO22021.models.PermisoDiarioModel;
 import com.Grupo10OO22021.models.PermisoPeriodoModel;
 import com.Grupo10OO22021.repository.IPermisoDiarioRepository;
@@ -60,15 +61,29 @@ public class QrGeneratorController {
 			throws Exception {
 		System.out.println("esto es idPermiso" + idPermiso);
 		PermisoDiarioModel per = null;
+		int cont = 0;
+		LugarModel desde = null;
+		LugarModel hasta = null;
 
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.PERMISO_VISTA_TRAER_POR_PERSONA);
 
 		per = permisoDiarioService.findByidPermiso(idPermiso);
+		
+		for(LugarModel l : per.getDesdeHasta()) {
+			
+			if (cont == 0) {
+				desde = l;
+			}if (cont == 1) {
+				hasta = l;
+			}
+			
+			cont ++;
+		}
 
 		QRCodeWriter qrCodeWriter = new QRCodeWriter();
 		BitMatrix bitMatrix = qrCodeWriter.encode(
 				URL + "nombre=" + per.getPedido().getNombre() + "&apellido=" + per.getPedido().getApellido() + "&dni="
-						+ per.getPedido().getDni() + "&motivo=" + per.getMotivo() + "&fecha=" + per.getFecha(),
+						+ per.getPedido().getDni() + "&motivo=" + per.getMotivo() + "&fecha=" + per.getFecha()  + "&desde="+ desde.getLugar()+ "&hasta"+ hasta.getLugar(),
 				BarcodeFormat.QR_CODE, 250, 250);
 
 		return MatrixToImageWriter.toBufferedImage(bitMatrix);
@@ -80,15 +95,29 @@ public class QrGeneratorController {
 
 		System.out.println("esto es idPermiso" + idPermiso);
 		PermisoPeriodoModel per = null;
+		int cont = 0;
+		LugarModel desde = null;
+		LugarModel hasta = null;
 
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.PERMISO_VISTA_TRAER_POR_PERSONA);
 
 		per = permisoPeriodoService.findByidPermiso(idPermiso);
+		
+		for(LugarModel l : per.getDesdeHasta()) {
+			
+			if (cont == 0) {
+				desde = l;
+			}if (cont == 1) {
+				hasta = l;
+			}
+			
+			cont ++;
+		}
 
 		QRCodeWriter qrCodeWriter = new QRCodeWriter();
 		BitMatrix bitMatrix = qrCodeWriter.encode(URL + "nombre=" + per.getPedido().getNombre() + "&apellido="
 				+ per.getPedido().getApellido() + "&dni=" + per.getPedido().getDni() + "&cantDias=" + per.getCantDias()
-				+ "&fecha=" + per.getFecha() + "&vehiculo=" + per.getRodado().getDominio(), BarcodeFormat.QR_CODE, 250,
+				+ "&fecha=" + per.getFecha() + "&desde="+ desde.getLugar()+ "&hasta"+ hasta.getLugar() + "&vehiculo=" + per.getRodado().getDominio(), BarcodeFormat.QR_CODE, 250,
 				250);
 
 		return MatrixToImageWriter.toBufferedImage(bitMatrix);
