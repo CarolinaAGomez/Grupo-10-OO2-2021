@@ -34,7 +34,18 @@ public class RodadoController {
 	
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("rodado")  @Validated RodadoModel rodadoModel, BindingResult result, RedirectAttributes redirectAttrs) {
+		
+		if (result.hasErrors()) {			 
+			 redirectAttrs
+             .addFlashAttribute("mensaje", "NO PUEDE SER VACIO")
+             .addFlashAttribute("clase", "warning");
+     return new RedirectView(ViewRouteHelper.RODADO_PRUEBA); //VER ESTO CON SEBA PORQUE SI PONGO ALTA ME LLEVA A UN PATH QUE NO EXISTE
+     
+	    }
+		
 		rodadoModel.setDominio(rodadoModel.getDominio().toLowerCase());
+	
+		
 		for(RodadoModel r : rodadoService.getAll()) {
 			if ((r.getDominio().equals(rodadoModel.getDominio()))) {
 		        redirectAttrs

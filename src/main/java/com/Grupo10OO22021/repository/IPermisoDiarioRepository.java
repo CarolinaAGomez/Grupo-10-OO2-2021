@@ -14,4 +14,5 @@ public interface IPermisoDiarioRepository extends JpaRepository<PermisoDiario, S
 
 	@Query("SELECT p from PermisoDiario p inner join fetch p.pedido pe where pe.idPersona = (:idPersona) ")
 	public Set<PermisoDiario> findByPedido(int idPersona);
+	public PermisoDiario findByidPermiso(int idPermiso);
 }

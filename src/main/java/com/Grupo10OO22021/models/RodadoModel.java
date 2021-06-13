@@ -1,10 +1,15 @@
 package com.Grupo10OO22021.models;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
 
 public class RodadoModel {
 
 
 	private int idRodado;
+	@NotEmpty
+	//@Pattern(regexp = "^[A]{1}\\[A-E]{1}\\[0-9]{3}\\[A]{1}\\[A]{1}$")
 	private String dominio;
 	private String vehiculo;
 

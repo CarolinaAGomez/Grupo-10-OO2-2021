@@ -68,7 +68,6 @@ public class ListaPerfilesPDF extends AbstractPdfView {
 		
 		
 		
-		
 		for (Perfil rol : listaPerfil) {
 			
 			

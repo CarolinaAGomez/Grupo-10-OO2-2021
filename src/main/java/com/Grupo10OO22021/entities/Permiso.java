@@ -35,6 +35,7 @@ public class Permiso {
 
 	@Column(name = "fecha")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	
 	protected LocalDate fecha;
 
 	//@ManyToMany(mappedBy = "permiso")

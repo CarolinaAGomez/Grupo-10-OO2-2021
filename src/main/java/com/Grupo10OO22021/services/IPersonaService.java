@@ -12,4 +12,6 @@ public interface IPersonaService {
     public List<Persona> GetAll();
     
     public PersonaModel traerDniPersona(long dni);
+    
+    public PersonaModel traerIdPersona(int idPersona);
 }

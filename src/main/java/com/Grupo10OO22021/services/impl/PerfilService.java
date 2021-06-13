@@ -61,6 +61,12 @@ public class PerfilService implements IPerfilService{
 		PerfilModel perfilModel = perfilConverter.entityToModel(perfilRepository.findByIdPerfil(id));
 		return perfilModel;
 	}
+
+	@Override
+	public List<Perfil> findAllByEnabledTrue() {
+		
+		return perfilRepository.findAllByEnabledTrue();
+	}
 }
 	
 

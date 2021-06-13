@@ -17,7 +17,13 @@
 				<div class="input">¿Qué dia solicita el permiso?</div>
 				<div class="input">
 					<input type="hidden" th:field="*{idPermiso}" readonly> 
+					
+					
 					<input type="date" th:field="*{fecha}" placeholder="Fecha"> 
+					
+					
+					<small th:classappend="'alert-' + (${clases != null} ? ${clases} : info)" th:if="${mensajes != null}"
+             th:text="${mensajes}" class="alert"></small>
 				</div>
 				
 				<small th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"

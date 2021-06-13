@@ -23,5 +23,9 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Serializable>
 	public abstract Usuario findByUsernameAndFetchPerfilEagerly(@Param("username") String username);
 	
 	public Usuario findByUsername(String Username);
+	
+	//borraaar
+	@Query("SELECT u FROM Usuario u JOIN FETCH u.perfil p WHERE p.idPerfil = (:idPerfil)")
+	public abstract Usuario findByIdUsuarioAndFetchPerfilEagerlya(@Param("idPerfil") int idPerfil);
 
 }

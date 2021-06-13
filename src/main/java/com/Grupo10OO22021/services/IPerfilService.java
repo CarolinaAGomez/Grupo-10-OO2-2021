@@ -16,4 +16,6 @@ public interface IPerfilService {
 	public boolean remove(PerfilModel perfilModel);
 	
 	public PerfilModel findById(int id);
+	
+	public List<Perfil> findAllByEnabledTrue();
 }

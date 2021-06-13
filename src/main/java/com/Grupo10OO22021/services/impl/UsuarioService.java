@@ -102,4 +102,10 @@ public class UsuarioService implements IUsuarioService {
 		
 	}
 
+	@Override
+	public UsuarioModel traerUsuarioYPerfilPorIdperfil(int id) {
+		UsuarioModel usuario = usuarioConverter.entityToModel(usuarioRepository.findByIdUsuarioAndFetchPerfilEagerlya(id));
+		return usuario;
+	}
+
 }
