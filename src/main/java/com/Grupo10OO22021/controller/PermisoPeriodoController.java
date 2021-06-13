@@ -60,12 +60,14 @@ public class PermisoPeriodoController {
 			@RequestParam(required = true) int desde, @RequestParam(required = true) int hasta) {
 		
 		if (result.hasErrors()) {			 
-			System.out.println("entrooo");
-			 return new RedirectView(ViewRouteHelper.PERMISOPERIODO_NEW);
+			redirectAttrs
+            .addFlashAttribute("mensajes", "la fecha tiene que ser desde hoy")
+            .addFlashAttribute("clases", "warning");
+			 return new RedirectView(ViewRouteHelper.PERMISOPERIODO_PRUEBA); //VER ESTO CON SEBA PORQUE SI PONGO ALTA ME LLEVA A UN PATH QUE NO EXISTE
+    
 	    }
 		
 		if(permiso.getCantDias()<=0) {
-			System.out.println("entro en el if");
 			 redirectAttrs
              .addFlashAttribute("mensaje", "LA CANTIDAD TIENE QUE SER MAYOR A 0")
              .addFlashAttribute("clase", "warning");

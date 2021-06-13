@@ -1,6 +1,7 @@
 package com.Grupo10OO22021.services.impl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +90,18 @@ public class PermisoDiarioService implements IPermisoDiarioService {
 			
 		}
 		return auxDesdeHasta;
+	}
+
+	@Override
+	public PermisoDiarioModel findByidPermiso(int idPermiso) {
+		
+		return permisoDiarioConverter.entityToModel(permisoDiarioRepository.findByidPermiso(idPermiso));
+	}
+
+	@Override
+	public List<PermisoDiario> traerPermisosDiario() {
+		
+		return permisoDiarioRepository.findAll();
 	}
 }
 //

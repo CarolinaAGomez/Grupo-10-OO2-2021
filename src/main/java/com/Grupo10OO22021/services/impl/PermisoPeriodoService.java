@@ -110,6 +110,12 @@ public class PermisoPeriodoService implements IPermisoPeriodoService {
 		return permisosPeriodo;
 	}
 
+	@Override
+	public PermisoPeriodoModel findByidPermiso(int idPermiso) {
+		
+		return permisoPeriodoConverter.entityToModel(permisoPeriodoRepository.findByidPermiso(idPermiso));
+	}
+
 	
 	/*@Override
 	public Set<PermisoDiarioModel> buscarActivosEntreFechas(String fechaInicial, String fechaFinal, int desde, int hasta) {

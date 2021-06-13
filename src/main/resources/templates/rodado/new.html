@@ -17,9 +17,18 @@
 			
 			<small th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
              th:text="${mensaje}" class="alert"></small>
+             
+             
+             
+             
+            
+             
 				<div class="input">
 					<input type="text" th:field="*{dominio}" placeholder="Dominio"> 
 				</div>
+				
+				 
+				
 				<div class="input">
 					<input type="text" th:field="*{vehiculo}" placeholder="Vehiculo">
 				</div>

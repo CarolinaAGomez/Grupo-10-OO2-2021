@@ -41,20 +41,11 @@
                     <p th:text="${permiso.desdeHasta[1].lugar}"></p>
                     
                     
-                         <a target="_blank" th:href="@{/generacionqr/?URL=https://carolinaagomez.github.io/PermisoDiario.html?(idPermiso=${permiso.pedido.idPersona},nombre=${permiso.pedido.nombre}
-                         ,apellido=${permiso.pedido.apellido},dni=${permiso.pedido.dni},fecha=${permiso.fecha},motivo=${permiso.motivo})}">VER CODIGO QR</a>
-                        
-                         <a target="_blank" th:href="@{https://carolinaagomez.github.io/PermisoDiario.html(nombre=${permiso.pedido.nombre}
-                    ,apellido=${permiso.pedido.apellido},desde=${permiso.desdeHasta[0].lugar},fecha=${permiso.fecha},hasta=${permiso.desdeHasta[1].lugar}
-                    ,motivo=${permiso.motivo},dni=${permiso.pedido.dni})}">Veeeer QR</a> 
-                        
+       <a target="_blank" th:href="@{/generacionqr/diario/?URL=https://carolinaagomez.github.io/PermisoDiario.html?(idPermiso=${permiso.idPermiso})}">VER CODIGO QR</a>
+                                       
                 </div>    
                     
-               <!-- <a target="_blank" th:href="@{/generacionqr?URL=https://carolinaagomez.github.io/index.html}">VER CODIGO QR</a>
-                </div>  -->
-                
-                
-                
+  
                 
             </div>
             <h2>Permiso periodo</h2>
@@ -77,6 +68,8 @@
                     <p th:text="${permiso.desdeHasta[0].lugar}"></p>
                     <h3>Hasta</h3>
                     <p th:text="${permiso.desdeHasta[1].lugar}"></p>
+                    
+                     <a target="_blank" th:href="@{/generacionqr/periodo/?URL=https://carolinaagomez.github.io/PermisoPeriodo.html?(idPermiso=${permiso.idPermiso})}">VER CODIGO QR</a>
                 </div> 
 		</div>
 		</div>

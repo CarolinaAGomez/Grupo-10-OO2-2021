@@ -3,6 +3,9 @@ package com.Grupo10OO22021.models;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -11,6 +14,7 @@ public class PermisoModel {
 	private int idPermiso;
 	private PersonaModel pedido;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@FutureOrPresent
 	private LocalDate fecha;
 	private Set<LugarModel> desdeHasta; 
 
