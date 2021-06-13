@@ -14,6 +14,7 @@ import com.Grupo10OO22021.models.PermisoModel;
 import com.Grupo10OO22021.repository.IPermisoRepository;
 import com.Grupo10OO22021.services.IPermisoService;
 
+@Service("permisoService")
 public class PermisoService implements IPermisoService {
 
 	@Autowired
